@@ -9,7 +9,7 @@
 import Foundation
 
 enum GameState {
-    case Play, Pause, GameOver
+    case Play, Pause, GameOver, SlowMotion
 }
 
 enum Action {
@@ -18,6 +18,14 @@ enum Action {
 
 enum ColorMode {
     case None, Black, White
+}
+
+enum PowerState  {
+    case None, SlowMotion, Shield
+}
+
+struct Constants {
+    static let slowMotionCoeff: Float = 0.5
 }
 
 class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
@@ -52,6 +60,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     var accelStartScheduler: NSTimer?
     var warningScheduler: NSTimer?
     var missileScheduler: NSTimer?
+    var slowMotionScheduler: NSTimer?
 
     
     //Game Constants
@@ -60,14 +69,12 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     
-    
-    
     func didLoadFromCCB() {
         
         //enable user inteaction
         userInteractionEnabled = true
         
-       gamePhysicsNode.debugDraw = true
+       // gamePhysicsNode.debugDraw = true
         
         //set physics collision delegate to self
         gamePhysicsNode.collisionDelegate = self
@@ -77,7 +84,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         accelStartScheduler = NSTimer.scheduledTimerWithTimeInterval(0.1, target: self, selector: Selector("accelStart"), userInfo: nil, repeats: true)
      
         //set missile spawner
-        missileScheduler = NSTimer.scheduledTimerWithTimeInterval(2.1, target: self, selector: Selector("spawnMissile"), userInfo: nil, repeats: true)
+        missileScheduler = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: Selector("spawnMissile"), userInfo: nil, repeats: true)
         
         if CCDirector.sharedDirector().paused {
             CCDirector.sharedDirector().resume()
@@ -107,15 +114,19 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
     //println("\(convertToWorldSpace(gamePhysicsNode.convertToNodeSpace(hero.position)).y) .. ")
     //println(gamePhysicsNode.position.y)
+        var motionCoeff: Float = 1.0
+        if hero.powerState == .SlowMotion {
+            motionCoeff = Constants.slowMotionCoeff
+        }
         
         if gameState == .Play {
             
-            let gamePhysX = gamePhysicsNode.position.x - CGFloat(gameSpeed) * CGFloat(delta)
+            let gamePhysX = gamePhysicsNode.position.x - CGFloat(gameSpeed) * CGFloat(delta) * CGFloat(motionCoeff)
             let gamePhysY = gamePhysicsNode.position.y
             gamePhysicsNode.position = ccp(gamePhysX, gamePhysY)
         
             //update hero's velocity with gameSpeed
-            hero.position = CGPointMake(hero.position.x + CGFloat(delta) * CGFloat(gameSpeed), hero.position.y)
+            hero.position = CGPointMake(hero.position.x + CGFloat(delta) * CGFloat(gameSpeed) * CGFloat(motionCoeff), hero.position.y)
             
             if hero.state == .Idle {
             
@@ -180,9 +191,8 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
         
         //hero enters falling state
-        hero.state = .Fall
+        //hero.state = .Fall
         hero.physicsBody.applyForce(CGPointMake(0, 1000))
-        
 
     
     }
@@ -272,15 +282,15 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             lastPlatformPosition = platforms.last!.position
             lastPlatformLength = platforms.last!.boundingBox().width
             
-            let randNum = Int(arc4random()) % 2
+            let randNum = CCRANDOM_0_1()
             
-            if randNum == 0 {
+            if randNum > 0.5 {
                 
                 platform = CCBReader.load("WhitePlatform") as! Platform
                 
             } else {
                 
-                platform = CCBReader.load("blackPlatform") as! Platform
+                platform = CCBReader.load("BlackPlatform") as! Platform
                 
             }
             
@@ -391,11 +401,12 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     func applyJump() {
         hero.physicsBody.velocity.y = hero.lift
         
-        if jumpLife.scaleY > 0 {
-            jumpLife.scaleY -= 0.1
+        if jumpLife.scaleY >= 0 {
+            jumpLife.scaleY -= 0.05
         }
         else{
             jumpScheduler!.invalidate()
+            hero.state = .Fall
         }
         
         
@@ -407,7 +418,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     func accelStart() {
         gameSpeed *= 1.1
         
-        if gameSpeed >= 400 {
+        if gameSpeed >= 400  && hero.powerState != .SlowMotion {
             
             accelStartScheduler!.invalidate()
             
@@ -420,7 +431,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     //called from accelScheduler every 2 seconds
     func speedUpGame() {
         
-        if gameSpeed <= 1400 {
+        if gameSpeed <= 1400 && hero.powerState != .SlowMotion {
             gameSpeed *=  1 + log10(gameSpeed) / (gameSpeed * log2(gameSpeed) * 5)
         } else {
             gameSpeed *= 1 + (1 / (gameSpeed * gameSpeed))
@@ -431,12 +442,16 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         minPlatformSpacing = gameSpeed * 1.0
 
     }
+    
+    func endSlowMotionMode() {
+        hero.powerState = .None
+    }
 
     
     
     //MARK: Collision Handling
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, blackPlatform: Platform!) -> Bool {
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, blackPlatform: Platform!) -> ObjCBool {
         println("..")
 
         if hero.colorMode == "black" {
@@ -446,7 +461,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         } else {
             
             // return to run state after hitting ground
-            if hero.state == .Fall {
+        //    if hero.state == .Fall {
 
                 jumpLife.scaleY = 1.0
                 hero.state = .Run
@@ -456,12 +471,12 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 let sequence = CCActionSequence(array: [move, moveBack])
                 runAction(sequence)
                 
-            }
+          //  }
             return true
         }
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, whitePlatform: Platform!) -> Bool {
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, whitePlatform: Platform!) -> ObjCBool {
         println(".")
         if hero.colorMode == "white" {
             
@@ -469,7 +484,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             
         } else {
             
-            if hero.state == .Fall {
+           // if hero.state == .Fall {
                 jumpLife.scaleY = 1.0
                 hero.state = .Run
                 
@@ -477,14 +492,15 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 let moveBack = CCActionEaseBounceOut(action: move.reverse())
                 let sequence = CCActionSequence(array: [move, moveBack])
                 runAction(sequence)
-            }
-            
+            //}
             return true
+
         }
+        
     }
     
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, whiteMissile: Missile!) -> Bool {
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, whiteMissile: Missile!) -> ObjCBool {
         if hero.colorMode == "black" {
             return true
         } else {
@@ -492,14 +508,24 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, blackMissile: Missile!) -> Bool {
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, blackMissile: Missile!) -> ObjCBool {
         if hero.colorMode == "white" {
             return true
         } else {
             return false
-            
         }
     
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero: Hero!, powerUp: PowerUp!) -> Bool {
+
+        println("power collided")
+        
+        hero.powerState = .SlowMotion
+        
+        slowMotionScheduler = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: Selector("endSlowMotionMode"), userInfo: nil, repeats: false)
+        powerUp.removeFromParent()
+        return false
     }
 }
 

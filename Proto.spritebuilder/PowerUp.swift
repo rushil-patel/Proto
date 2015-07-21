@@ -7,3 +7,13 @@
 //
 
 import Foundation
+
+
+class PowerUp: CCSprite {
+    
+    var powerType: String = ""
+    
+    
+    
+    
+}

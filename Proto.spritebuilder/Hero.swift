@@ -16,7 +16,7 @@ class Hero: CCSprite {
     
     //Finite State
     var state: Action!
-    
+    var powerState: PowerState = .None
     
     //Hero constants
     let lift: CGFloat = 400.0

@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>10</integer>
+	<integer>1</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -40,18 +40,18 @@
 		<key>children</key>
 		<array/>
 		<key>customClass</key>
-		<string>Hero</string>
+		<string>PowerUp</string>
 		<key>customProperties</key>
 		<array>
 			<dict>
 				<key>name</key>
-				<string>colorMode</string>
+				<string>powerType</string>
 				<key>optimized</key>
 				<false/>
 				<key>type</key>
 				<integer>3</integer>
 				<key>value</key>
-				<string>white</string>
+				<string>SlowMotion</string>
 			</dict>
 		</array>
 		<key>displayName</key>
@@ -65,7 +65,7 @@
 			<key>affectedByGravity</key>
 			<true/>
 			<key>allowsRotation</key>
-			<false/>
+			<true/>
 			<key>bodyShape</key>
 			<integer>0</integer>
 			<key>collisionCategories</key>
@@ -73,88 +73,54 @@
 			<key>collisionMask</key>
 			<array/>
 			<key>collisionType</key>
-			<string>hero</string>
+			<string>powerUp</string>
 			<key>cornerRadius</key>
 			<real>0.0</real>
 			<key>density</key>
-			<real>1.2000000476837158</real>
+			<real>1</real>
 			<key>dynamic</key>
 			<true/>
 			<key>elasticity</key>
 			<real>0.30000001192092896</real>
 			<key>friction</key>
-			<real>0.0</real>
+			<real>0.30000001192092896</real>
 			<key>points</key>
 			<array>
 				<array>
-					<real>16.9453125</real>
-					<real>28.468765258789062</real>
+					<real>0.0</real>
+					<real>0.0</real>
 				</array>
 				<array>
-					<real>1.640625</real>
-					<real>63.636734008789062</real>
+					<real>0.0</real>
+					<real>79</real>
 				</array>
 				<array>
-					<real>33.32421875</real>
-					<real>87.054702758789062</real>
+					<real>79</real>
+					<real>79</real>
 				</array>
 				<array>
-					<real>63.8359375</real>
-					<real>62.457046508789062</real>
-				</array>
-				<array>
-					<real>51.53125</real>
-					<real>28.941421508789062</real>
-				</array>
-				<array>
-					<real>50.78125</real>
-					<real>-1.1054534912109375</real>
-				</array>
-				<array>
-					<real>16.765625</real>
-					<real>0.1211090087890625</real>
+					<real>79</real>
+					<real>0.0</real>
 				</array>
 			</array>
 			<key>polygons</key>
 			<array>
 				<array>
 					<array>
-						<real>16.9453125</real>
-						<real>28.468765258789062</real>
+						<real>79</real>
+						<real>0.0</real>
 					</array>
 					<array>
-						<real>16.765625</real>
-						<real>0.1211090087890625</real>
+						<real>79</real>
+						<real>79</real>
 					</array>
 					<array>
-						<real>50.78125</real>
-						<real>-1.1054534912109375</real>
+						<real>0.0</real>
+						<real>79</real>
 					</array>
 					<array>
-						<real>51.53125</real>
-						<real>28.941421508789062</real>
-					</array>
-				</array>
-				<array>
-					<array>
-						<real>51.53125</real>
-						<real>28.941421508789062</real>
-					</array>
-					<array>
-						<real>63.8359375</real>
-						<real>62.457046508789062</real>
-					</array>
-					<array>
-						<real>33.32421875</real>
-						<real>87.054702758789062</real>
-					</array>
-					<array>
-						<real>1.640625</real>
-						<real>63.636734008789062</real>
-					</array>
-					<array>
-						<real>16.9453125</real>
-						<real>28.468765258789062</real>
+						<real>0.0</real>
+						<real>0.0</real>
 					</array>
 				</array>
 			</array>
@@ -215,7 +181,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Assets/basicHeroWhit.png</string>
+					<string>Assets/slowMo.png</string>
 				</array>
 			</dict>
 			<dict>
