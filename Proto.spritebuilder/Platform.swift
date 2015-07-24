@@ -18,15 +18,15 @@ class Platform: CCSprite {
         
         if rand < 0.33 {
             
-            self.scaleX = 1.8
+            self.scaleX = 1
         }
         else if rand >= 0.33 && rand < 0.66 {
             
-            self.scaleX = 2
+            self.scaleX = 1.3
         }
         else {
             
-            self.scaleX = 2.3
+            self.scaleX = 1.6
         }
     }
     

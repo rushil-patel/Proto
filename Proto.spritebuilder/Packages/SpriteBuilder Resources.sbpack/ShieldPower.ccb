@@ -51,7 +51,7 @@
 				<key>type</key>
 				<integer>3</integer>
 				<key>value</key>
-				<string>SlowMotion</string>
+				<string>Shield</string>
 			</dict>
 		</array>
 		<key>displayName</key>
@@ -157,7 +157,7 @@
 				<key>value</key>
 				<array>
 					<real>0.5</real>
-					<real>0.0</real>
+					<real>0.5</real>
 				</array>
 			</dict>
 			<dict>
@@ -181,7 +181,7 @@
 				<key>value</key>
 				<array>
 					<string></string>
-					<string>Assets/slowMo.png</string>
+					<string>Assets/Shield.png</string>
 				</array>
 			</dict>
 			<dict>

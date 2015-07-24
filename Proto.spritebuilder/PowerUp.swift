@@ -13,7 +13,10 @@ class PowerUp: CCSprite {
     
     var powerType: String = ""
     
-    
+    func didLoadFromCCB() {
+
+        self.scale = 0.5
+    }
     
     
 }

@@ -15,7 +15,8 @@ class Missile: CCSprite {
     var colorMode: String = ""
     
     func didLoadFromCCB() {
-        self.scale =  0.6
+        self.scale =  0.4
+        
     }
     
     func explode() {

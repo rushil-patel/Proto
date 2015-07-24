@@ -13,9 +13,10 @@ class GameOverScene: CCNode {
  
     
     weak var restartButton: CCButton!
+    var score: Int = 0
     
-    func didLoadFromCCB() {
-        
+    func setScore(userScore score: Int) {
+        self.score = score
     }
 
 }

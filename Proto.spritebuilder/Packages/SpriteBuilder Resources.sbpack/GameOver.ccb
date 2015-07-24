@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.20000000298023224</real>
+							<real>0.50880283117294312</real>
+							<real>0.30416664481163025</real>
 							<integer>1</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -109,7 +109,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Game Over!</string>
+							<string>Game Over</string>
 							<false/>
 						</array>
 					</dict>
@@ -128,7 +128,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
+							<real>96</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -278,8 +278,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.40000000596046448</real>
+							<real>0.53239434957504272</real>
+							<real>0.29739585518836975</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -303,8 +303,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.92489063739776611</real>
+							<real>1.4151479005813599</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -327,8 +327,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>40</real>
-							<real>40</real>
+							<real>24</real>
+							<real>24</real>
 							<integer>0</integer>
 							<integer>0</integer>
 						</array>
