@@ -258,7 +258,7 @@
 				<key>displayName</key>
 				<string>Restart</string>
 				<key>memberVarAssignmentName</key>
-				<string>restartButton</string>
+				<string></string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -316,7 +316,7 @@
 						<string>Block</string>
 						<key>value</key>
 						<array>
-							<string>restartGame</string>
+							<string>retryLevel</string>
 							<integer>2</integer>
 						</array>
 					</dict>
@@ -361,7 +361,7 @@
 						<string>String</string>
 						<key>value</key>
 						<array>
-							<string>Play Again</string>
+							<string>Retry</string>
 							<false/>
 						</array>
 					</dict>

@@ -13,70 +13,105 @@ class Hero: CCSprite {
     //Custom Properties
     var colorMode: String = ""
     
-    weak var upperArmFront: CCSprite!
-    weak var upperArmBack: CCSprite!
-    weak var lowerArmBack: CCSprite!
-    weak var lowerArmFront: CCSprite!
-    weak var head: CCSprite!
-    weak var torso: CCSprite!
-    weak var lowerLegFront: CCSprite!
-    weak var lowerLegBack: CCSprite!
-    weak var upperLegFront: CCSprite!
-    weak var upperLegBack: CCSprite!
-    
-    
     //Finite State
     var state: Action!
     var powerState: PowerState = .None
     
     //Hero constants
-    let lift: CGFloat = 300.0
+    let lift: CGFloat = 5000.0
     
     func didLoadFromCCB() {
+        
         state = .Idle
+        
+        self.scale = 0.3
     }
     
+    
+    func runAnim() {
+        
+        if self.colorMode == "black" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("RunBlack")
+            
+        } else if self.colorMode == "white" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("RunWhite")
+
+            
+        }
+        
+    }
+    
+    func idleAnim() {
+        
+        if self.colorMode == "black" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("IdleBlack")
+            
+        } else if self.colorMode == "white" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("IdleWhite")
+
+        }
+        
+    }
+    
+    func jumpAnim() {
+        
+        if self.colorMode == "black" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("JumpBlack")
+            
+        } else if self.colorMode == "white" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("JumpWhite")
+            
+        }
+    }
     
     
     // toggles hero's sprite (color) and animation sprite frame from current
     // to other
     func toggle() {
         if colorMode == "white" {
-            //let blackHeroSprite = CCSpriteFrame(imageNamed: "Assets/basicHeroBlack.png") as CCSpriteFrame
-            //self.spriteFrame = blackHeroSprite
-            
-            torso.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/torsoBlack.png") as CCSpriteFrame
-            upperArmFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperArmBlack.png") as CCSpriteFrame
-            upperArmBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperArmBlack.png") as CCSpriteFrame
-            lowerArmBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerArmBlack.png") as CCSpriteFrame
-            lowerArmFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerArmBlack.png") as CCSpriteFrame
-            head.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/headBlack.png") as CCSpriteFrame
-            lowerLegFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerLegBlack.png") as CCSpriteFrame
-            lowerLegBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerLegBlack.png") as CCSpriteFrame
-            upperLegFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperLegBlack.png") as CCSpriteFrame
-            upperLegBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperLegBlack.png") as CCSpriteFrame
-            
-            
-            
             
             colorMode = "black"
+            
+            let animName = self.animationManager.runningSequenceName
+
+            if animName == "RunWhite" {
+                
+                self.runAnim()
+                
+            } else if animName == "JumpWhite" {
+                
+                self.jumpAnim()
+                
+            } else if animName == "IdleWhite" {
+                
+                self.idleAnim()
+            }
         }
         else if colorMode == "black" {
-            //let whiteHeroSprite = CCSpriteFrame(imageNamed: "Assets/basicHeroWhit.png") as CCSpriteFrame
-            //self.spriteFrame = whiteHeroSprite
-            
-            torso.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/torsoWhite.png") as CCSpriteFrame
-            upperArmFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperArmWhite.png") as CCSpriteFrame
-            upperArmBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperArmWhite.png") as CCSpriteFrame
-            lowerArmBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerArmWhite.png") as CCSpriteFrame
-            lowerArmFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerArmWhite.png") as CCSpriteFrame
-            head.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/headWhite.png") as CCSpriteFrame
-            lowerLegFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerLegWhite.png") as CCSpriteFrame
-            lowerLegBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/lowerLegWhite.png") as CCSpriteFrame
-            upperLegFront.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperLegWhite.png") as CCSpriteFrame
-            upperLegBack.spriteFrame = CCSpriteFrame(imageNamed: "Assets/Hero/upperLegWhite.png") as CCSpriteFrame
             
             colorMode = "white"
+            
+            
+            let animName = self.animationManager.runningSequenceName
+            
+            if animName == "RunBlack" {
+                
+                self.runAnim()
+                
+            } else if animName == "JumpBlack" {
+                
+                self.jumpAnim()
+                
+            } else if animName == "IdleBlack" {
+                
+                self.idleAnim()
+            }
         }
     }
 
