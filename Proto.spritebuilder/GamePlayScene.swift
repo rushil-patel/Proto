@@ -36,7 +36,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     //code connection
     weak var hero: Hero!
-    weak var heartCounterLabel: CCLabelTTF!
     weak var levelNode: CCNode!
     weak var cameraTargetNode: CCNode!
     weak var pauseButton: CCButton!
@@ -62,15 +61,12 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     var maxAirTimeSquared: Float = 2.0
     var minPlatformSpacing: Float = 100.0 * 1.0
     var maxPlatformSpacing: Float = 100.0 * 2.0
-    var heartsCollected: Int = 0
     var jumpTime: Float = 0.7
-    //-1 = left , 0 = unset, 1 = right
-    var lastHeroDirection = 0
+
     
     
     //Mark: Schedulers
     var jumpScheduler: NSTimer?
-    var slowMotionScheduler: NSTimer?
     var onEnterDelay: NSTimer?
     var moveScheduler: NSTimer?
 
@@ -102,7 +98,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         
         //initialize game variables
-        heartsCollected = 0
         gameState = .Play
         gamePhysicsNode.position = CGPointZero
         didStartTap = true
@@ -278,10 +273,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
 
-
-    func updateHeartCounter() {
-        heartCounterLabel.string = "\(heartsCollected)"
-    }
     
     func triggerGamePause() {
         
@@ -374,6 +365,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
         pauseButton.visible = true
         pauseMenu.removeFromParent()
+        gameState = .Play
         
         
     }
@@ -414,42 +406,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         
     }
-    
-    
-    
-    //called from accelStartScheduler every .05 seconds
-/*    func accelStart() {
-        gameSpeed *= 1.1
-        
-        if gameSpeed >= 400  && hero.powerState != .SlowMotion {
-            
-            accelStartScheduler!.invalidate()
-            
-            //set gameSpeed accelerator scheduler
-            accelScheduler = NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: Selector("speedUpGame"), userInfo: nil, repeats: true)
-        }
-    }
-*/    
-    
-    //called from accelScheduler every 2 seconds
-    /*func speedUpGame() {
-        
-        if gameSpeed <= 1000 && hero.powerState != .SlowMotion {
-            gameSpeed *=  1 + log10(gameSpeed) / (gameSpeed * log2(gameSpeed) * 5)
-        } else if hero.powerState != .SlowMotion {
-            //do nothing
-        } else {
-            gameSpeed *= 1 + (1 / (gameSpeed * gameSpeed))
-        }
-        
-        maxAirTimeSquared = Float(Constants.screenHeight/hero.lift + ((-2 * Constants.screenHeight)/gamePhysicsNode.gravity.y))
-        maxPlatformSpacing = sqrt(maxAirTimeSquared) * gameSpeed
-        minPlatformSpacing = gameSpeed * 1.0
-        
-    }
-*/
-
-    
     
     
     //MARK: Collision Handling
@@ -543,13 +499,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, heart : CCSprite!) -> ObjCBool {
-        
-        heartsCollected++
-        updateHeartCounter()
-        heart.removeFromParent()
-        return false
-    }
+
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, princess: CCSprite!) -> ObjCBool {
 

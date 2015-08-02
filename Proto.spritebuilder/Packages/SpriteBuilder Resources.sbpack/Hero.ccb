@@ -492,7 +492,7 @@
 				<key>type</key>
 				<integer>3</integer>
 				<key>value</key>
-				<string>"white"</string>
+				<string>white</string>
 			</dict>
 		</array>
 		<key>displayName</key>

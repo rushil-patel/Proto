@@ -18,6 +18,8 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     weak var instructionLabel: CCLabelTTF!
     weak var tutorialPhysicsNode: CCPhysicsNode!
     weak var iPhoneFigure: CCNode!
+    weak var pauseButton: CCButton!
+    var pauseMenu: PauseScene!
     
     var gyroUserEnabled = false
     var tapUserEnabled = false
@@ -47,8 +49,6 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     func didLoadFromCCB() {
         
         tutorialPhysicsNode.collisionDelegate = self
-        
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resumeLevel"), name: "color_toggle", object: nil)
 
         if motionManager.deviceMotionAvailable {
             
@@ -74,18 +74,21 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     override func onEnter() {
         
         super.onEnter()
+        progressState++
         
     }
     
 
     override func update(delta: CCTime) {
         
-        
-        /*if startYaw == nil {
+        if startYaw == nil {
         
             startYaw = motionManager.deviceMotion.attitude.yaw
+
         }
-        
+        print(startYaw)
+
+        println(yaw)
         if let deviceMotion = motionManager.deviceMotion {
         
             let currentAttitude = deviceMotion.attitude
@@ -95,13 +98,13 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         
         if gyroUserEnabled {
             
-            yaw = clampf(yaw, Float(0.4), Float(-0.4))
+            yaw = clampf(yaw, Float(startYaw - 0.4), Float(startYaw + 0.4))
             
-            if yaw > Float(startYaw + 0.05) {
+            if yaw > Float(startYaw) {
         
                 hero.physicsBody.velocity.x = -700 * abs(CGFloat(yaw))
                 
-            } else if yaw < Float(startYaw - 0.05) {
+            } else if yaw < Float(startYaw) {
         
                 hero.physicsBody.velocity.x = 700 * abs(CGFloat(yaw))
                 
@@ -110,16 +113,15 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
                 hero.physicsBody.velocity.x = 0
                 
             }
-         */
-            yaw = 0.5
+
             //recognize that the user has learned the moving mechanic
-            if (yaw >= 0.2 || yaw <= -0.2) && progressState == -1 {
-                
+            if (yaw >= Float(startYaw + 0.25) || yaw <= Float(startYaw - 0.25)) && progressState == 0 {
+            
                 progressState++
 
             }
-        //}
-        //*/
+        }
+        
     
         
         
@@ -161,10 +163,9 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         case 0:
             iPhoneFigure.runAction(CCActionFadeIn(duration: 0.5))
             gyroUserEnabled = true
-            progressState++
             
         case 1:
-            
+             
             iPhoneFigure.runAction(CCActionFadeOut(duration: 0.3))
             userInteractionEnabled = true
             
@@ -173,7 +174,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             switchUserEnabled = true
             
             if switchUserEnabled {
-                NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("recognizeSwitchToggle"), name: "color_toggle", object: nil)
+                NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("colorToggle"), name: "color_toggle", object: nil)
 
             }
         default:
@@ -181,6 +182,63 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         }
 
        
+    }
+    
+    
+    // MARK: Observer selectors
+    
+    func colorToggle() {
+        
+        hero.toggle()
+        
+    }
+    
+    func loadMainMenu() {
+        
+        var mainMenu = CCBReader.load("MainScene")
+        var scene = CCScene()
+        
+        scene.addChild(mainMenu)
+        CCDirector.sharedDirector().replaceScene(scene, withTransition: CCTransition(fadeWithDuration: 1.0))
+    }
+    
+    func resumeTutorial() {
+        
+        //animation has call back that will remove pauseMenu Node from gameScene
+        pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
+        pauseButton.visible = true
+        pauseMenu.removeFromParent()
+        
+        
+    }
+    
+    func retryTutorial() {
+        
+        var tutorialScene = CCBReader.load("TutorialScene")
+        
+        var scene = CCScene()
+        scene.addChild(tutorialScene)
+        
+        CCDirector.sharedDirector().replaceScene(scene, withTransition: CCTransition(moveInWithDirection: CCTransitionDirection(rawValue: 2)!, duration: 1.0))
+    }
+    
+    // END Observer selectors
+    
+    func triggerGamePause() {
+        
+        hero.physicsBody.velocity = CGPointZero
+        
+        pauseButton.visible = false
+        
+        pauseMenu = CCBReader.load("PauseScene") as! PauseScene
+        pauseMenu.cascadeOpacityEnabled = true
+        self.addChild(pauseMenu)
+        pauseMenu.runAction(CCActionFadeIn(duration: 0.1))
+        
+        
+        if let jumpScheduler = jumpScheduler {
+            jumpScheduler.invalidate()
+        }
     }
     
      override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
