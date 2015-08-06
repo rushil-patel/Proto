@@ -10,6 +10,10 @@ import Foundation
 
 class LevelCompleteScene: CCNode {
     
-    
+    weak var nextLevelButton: CCNode!
+    weak var retryButton: CCNode!
+    weak var homeButton: CCNode!
+    weak var bestTimeLabel: CCLabelTTF!
+    weak var currentTimeLabel: CCLabelTTF!
     
 }

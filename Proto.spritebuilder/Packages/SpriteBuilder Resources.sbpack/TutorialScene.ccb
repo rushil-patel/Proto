@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>15</integer>
+	<integer>16</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -531,7 +531,7 @@
 								<string>Position</string>
 								<key>value</key>
 								<array>
-									<real>0.0</real>
+									<real>-100</real>
 									<real>0.0</real>
 									<integer>0</integer>
 									<integer>0</integer>
@@ -545,9 +545,9 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
+									<real>1000</real>
 									<real>106.5</real>
-									<integer>2</integer>
+									<integer>0</integer>
 									<integer>0</integer>
 								</array>
 							</dict>
@@ -910,7 +910,7 @@
 							<key>cornerRadius</key>
 							<real>0.0</real>
 							<key>density</key>
-							<real>1</real>
+							<real>100</real>
 							<key>dynamic</key>
 							<false/>
 							<key>elasticity</key>
@@ -989,10 +989,10 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>0.33281248807907104</real>
-									<integer>2</integer>
-									<integer>2</integer>
+									<real>1000</real>
+									<real>400</real>
+									<integer>0</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1014,7 +1014,7 @@
 								<key>value</key>
 								<array>
 									<real>1</real>
-									<real>0.5</real>
+									<real>0.14453423023223877</real>
 									<false/>
 									<integer>0</integer>
 								</array>
@@ -1084,7 +1084,7 @@
 							<key>cornerRadius</key>
 							<real>0.0</real>
 							<key>density</key>
-							<real>1</real>
+							<real>100</real>
 							<key>dynamic</key>
 							<false/>
 							<key>elasticity</key>
@@ -1163,10 +1163,10 @@
 								<string>Size</string>
 								<key>value</key>
 								<array>
-									<real>1</real>
-									<real>0.33000001311302185</real>
-									<integer>2</integer>
-									<integer>2</integer>
+									<real>1000</real>
+									<real>106.5</real>
+									<integer>0</integer>
+									<integer>0</integer>
 								</array>
 							</dict>
 							<dict>
@@ -1223,6 +1223,8 @@
 								<real>0.80000001192092896</real>
 							</dict>
 						</array>
+						<key>selected</key>
+						<true/>
 					</dict>
 					<dict>
 						<key>UUID</key>
@@ -1919,8 +1921,6 @@
 						<array/>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

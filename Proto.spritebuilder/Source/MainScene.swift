@@ -17,4 +17,13 @@ class MainScene: CCNode {
         tutorialScene.addChild(tutorial)
         CCDirector.sharedDirector().presentScene(tutorialScene, withTransition: CCTransition(fadeWithDuration: 1))
     }
+    
+    func launchLevelSelect() {
+        
+        let levelSelectScene = CCScene()
+        let levelSelect = CCBReader.load("LevelSelectScene") as! LevelSelectScene
+        levelSelectScene.addChild(levelSelect)
+        
+        CCDirector.sharedDirector().presentScene(levelSelectScene, withTransition: CCTransition(fadeWithDuration: 0.5))
+    }
 }

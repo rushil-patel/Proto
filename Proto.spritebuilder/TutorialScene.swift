@@ -24,6 +24,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     var gyroUserEnabled = false
     var tapUserEnabled = false
     var switchUserEnabled = false
+    var heroState: HeroAction = .Idle
     
     var currentTutorialPage: CCNode!
     let motionManager = CMMotionManager()
@@ -36,8 +37,18 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     var progressState = -1 {
        
         didSet {
-            
-            self.scheduleOnce(Selector("displayInstruction"), delay: 1.5)
+            //ignore delay for first instruction
+            //immediate pop up
+            if progressState == 0 {
+                
+                displayInstruction()
+                
+            } else {
+                
+                //enable display for other instruction
+                self.scheduleOnce(Selector("displayInstruction"), delay: 1.5)
+
+            }
             
         }
         
@@ -55,18 +66,22 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             motionManager.deviceMotionUpdateInterval = 1.0/60.0
             motionManager.startDeviceMotionUpdates()
             
-            if motionManager.gyroAvailable {
-                
-                motionManager.gyroUpdateInterval = 1.0/60.0
-                motionManager.startGyroUpdates()
-            }
-            else {
+            if motionManager.accelerometerAvailable {
+                motionManager.accelerometerUpdateInterval = 1.0/60.0
+                motionManager.startAccelerometerUpdates()
+            } else {
                 //alert cannot use gyroscope
             }
         }
         else {
             //alert cannot use gyroscope
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMainMenu:"), name: "home_touch_ended", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resumeTutorial:"), name: "resume_touch_ended", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("retryTutorial:"), name: "retry_touch_ended", object: nil)
+        
+
     
     }
     
@@ -81,41 +96,49 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
 
     override func update(delta: CCTime) {
         
-        if startYaw == nil {
+        /*if startYaw == nil {
         
             startYaw = motionManager.deviceMotion.attitude.yaw
 
-        }
+        }*/
         print(startYaw)
 
         println(yaw)
-        if let deviceMotion = motionManager.deviceMotion {
-        
-            let currentAttitude = deviceMotion.attitude
-            yaw = Float(currentAttitude.yaw)
-            // println("\(startYaw) : \(yaw)")
-        }
         
         if gyroUserEnabled {
             
-            yaw = clampf(yaw, Float(startYaw - 0.4), Float(startYaw + 0.4))
+            yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
+            yaw = clampf(yaw, Float(-1.0), Float(1.0))
             
-            if yaw > Float(startYaw) {
-        
-                hero.physicsBody.velocity.x = -700 * abs(CGFloat(yaw))
+            
+            if yaw < Float(0.01) && yaw > Float(-0.01) {
+                yaw = 0.0
+                heroState = .Idle
                 
-            } else if yaw < Float(startYaw) {
-        
-                hero.physicsBody.velocity.x = 700 * abs(CGFloat(yaw))
+            } else  {
+                
+                if heroState != .Jump {
+                    
+                    heroState = .Run
+                }
+            }
+            
+            if yaw > Float(0.01) {
+                
+                hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
+                
+            } else if yaw < Float(0.01) {
+                
+                hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
                 
             } else {
-        
+                
                 hero.physicsBody.velocity.x = 0
                 
             }
-
+            
             //recognize that the user has learned the moving mechanic
-            if (yaw >= Float(startYaw + 0.25) || yaw <= Float(startYaw - 0.25)) && progressState == 0 {
+            if (yaw >= Float(0.6) || yaw <= Float(-0.6)) && progressState == 0 {
             
                 progressState++
 
@@ -132,17 +155,16 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         if jumpTime == 0.7 {
             
             hero.physicsBody.velocity.y = CGFloat(300)
-            jumpTime -= 0.08
+            jumpTime -= 0.06
         }
         else if jumpTime > 0.0 {
             
             hero.physicsBody.velocity.y = CGFloat(jumpTime * 10 * 50)
-            jumpTime -= 0.02
+            jumpTime -= 0.015
             
         }  else {
             
             jumpScheduler!.invalidate()
-            hero.state = .Fall
             
         }
         
@@ -193,7 +215,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         
     }
     
-    func loadMainMenu() {
+    func loadMainMenu(note: NSNotification) {
         
         var mainMenu = CCBReader.load("MainScene")
         var scene = CCScene()
@@ -202,7 +224,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         CCDirector.sharedDirector().replaceScene(scene, withTransition: CCTransition(fadeWithDuration: 1.0))
     }
     
-    func resumeTutorial() {
+    func resumeTutorial(note: NSNotification) {
         
         //animation has call back that will remove pauseMenu Node from gameScene
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
@@ -212,7 +234,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         
     }
     
-    func retryTutorial() {
+    func retryTutorial(note: NSNotification) {
         
         var tutorialScene = CCBReader.load("TutorialScene")
         
@@ -249,26 +271,29 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             tapUserEnabled = true
         }
         
-        if hero.state != .Jump && hero.state != .Fall {
+        if heroState != .Jump {
             
             jumpScheduler = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("applyJump"), userInfo: nil, repeats: true)
-            hero.state = .Jump
+            heroState = .Jump
         }
         
     }
     
     override func touchEnded(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         
-        if hero.state == .Jump || hero.state == .Fall {
+        if let jumpScheduler = jumpScheduler {
             jumpScheduler.invalidate()
-            hero.state = .Fall
         }
     }
     
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, normalPlatform: CCNode!) -> ObjCBool {
         
-        hero.state = .Idle
+        if let jumpScheduler = jumpScheduler {
+            jumpScheduler.invalidate()
+        }
+        
+        heroState = .Run
         jumpTime = 0.7
         return true
         

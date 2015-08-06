@@ -8,38 +8,42 @@
 
 import Foundation
 import CoreMotion
+import AudioToolbox
 
 enum GameState {
     case Play, Pause, GameOver, Starting, GameWon
-}
-
-enum Action {
-    case Run, Jump, Idle, Fall
 }
 
 enum ColorMode {
     case None, Black, White
 }
 
-enum PowerState  {
-    case None, SlowMotion, Shield
+
+
+enum HeroAction {
+    case Run, Jump, Idle
 }
 
+
 struct Constants {
-    static let slowMotionCoeff: Float = 0.5
-    static let powerFrequency: Float = 0.5
     static let screenHeight: CGFloat = CCDirector.sharedDirector().viewSize().height
     static let screenWidth: CGFloat = CCDirector.sharedDirector().viewSize().width
 }
 
 class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
-    //code connection
-    weak var hero: Hero!
+    
+    //***User Activity State***//
+    var userActivityState = UserState()
+    //********** END **********//
+    
+    //code connections
+    var hero: Hero = CCBReader.load("Hero") as! Hero
     weak var levelNode: CCNode!
     weak var cameraTargetNode: CCNode!
     weak var pauseButton: CCButton!
-
+    weak var gameTimerLabel: CCLabelTTF!
+    
     var pauseMenu: PauseScene!
     
     //gameplay physics node connection
@@ -51,24 +55,28 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     var gameState: GameState = .Play
     var level: Level!
     var actionFollow: CCActionFollow!
-    var didStartTap: Bool = true
     let motionManager = CMMotionManager()
-    var startYaw : Double!
     var yaw: Float = 0.0
+    var gameTimer: Double = 0.0
+    var heroState: HeroAction = .Idle {
+        willSet(newValue) {
+            if newValue == .Idle && heroState != .Idle {
+                //do nothing
+            } else if newValue == .Jump && heroState != .Jump {
+                hero.jumpAnim()
+            } else if newValue == .Run && heroState != .Run {
+                hero.runAnim()
+            }
+        }
+    }
     
     //MARK: Game Dependent Variabes
-    var gameSpeed: Float = 0
-    var maxAirTimeSquared: Float = 2.0
-    var minPlatformSpacing: Float = 100.0 * 1.0
-    var maxPlatformSpacing: Float = 100.0 * 2.0
     var jumpTime: Float = 0.7
 
     
     
     //Mark: Schedulers
     var jumpScheduler: NSTimer?
-    var onEnterDelay: NSTimer?
-    var moveScheduler: NSTimer?
 
     
     func didLoadFromCCB() {
@@ -77,10 +85,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
         UIDevice.currentDevice().setValue(value, forKey: "orientation")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("toggleHeroColor"), name: "color_toggle", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMainMenu"), name: "home_touch_ended", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resumeLevel"), name: "resume_touch_ended", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("retryLevel"), name: "retry_touch_ended", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("toggleHeroColor:"), name: "color_toggle", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadMainMenu:"), name: "home_touch_ended", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("resumeLevel:"), name: "resume_touch_ended", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("retryLevel:"), name: "retry_touch_ended", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("loadNextLevel:"), name: "next_touch_ended", object: nil)
         
         //enable user inteaction
         userInteractionEnabled = true
@@ -100,15 +109,14 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         //initialize game variables
         gameState = .Play
         gamePhysicsNode.position = CGPointZero
-        didStartTap = true
         
         if motionManager.deviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 1.0/60.0
             motionManager.startDeviceMotionUpdates()
-            
-            if motionManager.gyroAvailable {
-                motionManager.gyroUpdateInterval = 1.0/60.0
-                motionManager.startGyroUpdates()
+
+            if motionManager.accelerometerAvailable {
+                motionManager.accelerometerUpdateInterval = 1.0/60.0
+                motionManager.startAccelerometerUpdates()
             }
             else {
                 //alert cannot use gyroscope
@@ -125,7 +133,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         super.onEnter()
         
         if level == nil {
-            level = CCBReader.load("Levels/Level1") as! Level
+            level = CCBReader.load("Levels/Level1-1") as! Level
         }
         
         //level will be set from previous level
@@ -137,7 +145,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         actionFollow = CCActionFollow(target: cameraTargetNode , worldBoundary: level.boundingBox())
         gamePhysicsNode.runAction(actionFollow)
-        
+    
     }
     
     override func onExit() {
@@ -147,70 +155,75 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     override func fixedUpdate(delta: CCTime) {
-
+        
         cameraTargetNode.position.x = Constants.screenWidth/2 - CGFloat(level.startPosX) + hero.position.x
+
         
     }
     
     override func update(delta: CCTime) {
         
-        if startYaw == nil {
-            startYaw = motionManager.deviceMotion.attitude.yaw
-            
-        }
-
-
-        if let deviceMotion = motionManager.deviceMotion {
-            let currentAttitude = deviceMotion.attitude
-            yaw = Float(currentAttitude.yaw)
-           // println("\(startPitch) : \(pitch)")
-        }
-
-        
-        if didStartTap == true {
-            
+    
             if gameState == .Play {
+                
+                gameTimer = gameTimer + delta
+                gameTimerLabel.string =  NSString(format: "%.2f", gameTimer) as String
+                
+                yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
+                yaw = clampf(yaw, Float(-1.0), Float(1.0))
         
-                yaw = clampf(yaw, Float(0.4), Float(-0.4))
-                
-                if yaw < Float(startYaw + 0.01) && yaw > Float(startYaw - 0.01) {
-                    yaw = Float(startYaw)
-                    hero.state = .Idle
-                
-                } else  {
-                    if hero.state != .Jump || hero.state != .Fall {
+                if yaw < Float(0.01) && yaw > Float(-0.01) {
+                    yaw = 0.0
+                    if heroState != .Jump {
                         
-                        hero.state = .Run
+                        //heroState = .Idle
+                    }
+                    
+                } else  {
+                    if heroState != .Jump {
+                        
+                        //heroState = .Run
                     }
                 }
                 
-                if yaw > Float(startYaw + 0.05) {
+                if yaw > Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = -700 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
 
-                } else if yaw < Float(startYaw - 0.05) {
+                } else if yaw < Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = 700 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
 
                 } else {
                    
                     hero.physicsBody.velocity.x = 0
 
                 }
+        
+                let boundRight = level.position.x + level.boundingBox().width
+                let boundLeft = level.position.x
 
-                
-                
+                if hero.position.x + hero.boundingBox().width/2 >= boundRight && yaw > 0{
+        
+                    hero.physicsBody.velocity.x = 0
+                    
+                } else if hero.position.x - hero.boundingBox().width/2 <= boundLeft && yaw < 0{
+                    
+                    hero.physicsBody.velocity.x = 0
+                }
+        
                /* if hero.physicsBody.velocity.x < 150 {
+                   
                     hero.physicsBody.velocity.x += 10
                     hero.physicsBody.velocity.x *= 2
                 }
                
                 */
                         
-               /* if hero.state == .Idle {
+               /* if heroState == .Idle {
                     
                     //accelerate Game speed from 0 -> 100 (for beginning game and slow downs
-                    hero.state = .Run
+                    heroState = .Run
                     
                 }
                 */
@@ -236,7 +249,9 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             } else if gameState == .GameWon {
                 
             }
-        }
+
+        
+    
     }
     
     
@@ -244,15 +259,14 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         
-        if didStartTap {
-            if hero.state == .Run || hero.state == .Idle {
+            if heroState == .Run || heroState == .Idle {
                
                 hero.physicsBody.velocity.y = 300
+
                 jumpScheduler = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("applyJump"), userInfo: nil, repeats: true)
-                hero.state = .Jump
+
                 hero.jumpAnim()
             }
-        }
     }
     
     override func touchMoved(touch: CCTouch!, withEvent event: CCTouchEvent!) {
@@ -260,28 +274,24 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     override func touchEnded(touch: CCTouch!, withEvent event: CCTouchEvent!) {
-
-        if didStartTap == false {
-            didStartTap = true
-        } else {
-            
-            if let jumpScheduler = jumpScheduler {
-                jumpScheduler.invalidate()
-                hero.state == .Fall
-            }
+        
+        if let jumpScheduler = jumpScheduler {
+        
+            jumpScheduler.invalidate()
+        
         }
+        
+
         
     }
 
     
     func triggerGamePause() {
         
-       // CCDirector.sharedDirector().pause()
         gameState = .Pause
         hero.physicsBody.velocity = CGPointZero
         
         pauseButton.visible = false
-
         pauseMenu = CCBReader.load("PauseScene") as! PauseScene
         pauseMenu.cascadeOpacityEnabled = true
         self.addChild(pauseMenu)
@@ -299,14 +309,113 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         gamePhysicsNode.stopAction(actionFollow)
         hero.idleAnim()
         hero.physicsBody.velocity = CGPointZero
-
         
         if let jumpScheduler = jumpScheduler {
+           
             jumpScheduler.invalidate()
+            
         }
         
-        
+        //load up the level complete screen and set the time labels
         var levelCompleteScreen = CCBReader.load("LevelComplete", owner: self) as! LevelCompleteScene
+        levelCompleteScreen.currentTimeLabel.string = gameTimerLabel.string
+        
+        //Handle Best Time/ Current Time stuff
+        if let timeDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey("bestTimesDictionary") as? Dictionary<String, String> {
+            
+            let currentTime = gameTimerLabel.string
+            
+            //get bestTime if it exists
+            if let bestTime = timeDictionary[level.currentLevel] {
+                
+                //compare both to bestTime and reset if needed
+                if (currentTime as NSString).floatValue < (bestTime as NSString).floatValue {
+                    
+                    userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
+                    levelCompleteScreen.bestTimeLabel.string = currentTime
+                    
+                    //animate NEW BEST TIME SCORE
+                    
+                } else {
+                    //set bestTimelabel to best time
+                    levelCompleteScreen.bestTimeLabel.string = bestTime
+
+                }
+                
+            } else {
+                
+                //best time does not exist
+                //set current time to best time
+                userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
+                levelCompleteScreen.bestTimeLabel.string = gameTimerLabel.string
+                
+            }
+            
+            
+        }
+        
+        //Handle Stars Earned Stuff 
+        
+        if let starsDictionary = NSUserDefaults.standardUserDefaults().dictionaryForKey("starsEarnedDictionary") as? Dictionary<String, Int> {
+            
+            let currentTime = (gameTimerLabel.string as NSString).floatValue
+            
+            if currentTime < 1.0 * level.threeStarTime {
+                
+                levelCompleteScreen.animationManager.runAnimationsForSequenceNamed("spawn3Stars")
+                if let mostStarsEarned = starsDictionary[level.currentLevel] {
+                    
+                    if mostStarsEarned < 3 {
+                        
+                        userActivityState.updateStarsEarned(3, levelKey: level.currentLevel)
+                        
+                    }
+                    
+                } else {
+                    
+                    userActivityState.updateStarsEarned(1, levelKey: level.currentLevel)
+                }
+                
+            } else if currentTime < 1.5 * level.threeStarTime {
+                
+                levelCompleteScreen.animationManager.runAnimationsForSequenceNamed("spawn2Stars")
+                
+                if let mostStarsEarned = starsDictionary[level.currentLevel] {
+                    
+                    if mostStarsEarned < 2 {
+                        
+                        userActivityState.updateStarsEarned(2, levelKey: level.currentLevel)
+                        
+                    }
+                    
+                } else {
+                    
+                    userActivityState.updateStarsEarned(1, levelKey: level.currentLevel)
+                }
+                
+
+            } else {
+                
+                levelCompleteScreen.animationManager.runAnimationsForSequenceNamed("spawn1Stars")
+                if let mostStarsEarned = starsDictionary[level.currentLevel] {
+                    
+                    if mostStarsEarned < 1 {
+                      
+                        userActivityState.updateStarsEarned(1, levelKey: level.currentLevel)
+
+                    }
+                } else {
+                    
+                    userActivityState.updateStarsEarned(1, levelKey: level.currentLevel)
+                }
+            }
+            
+        }
+        
+        //animate the stars based user time
+        
+        
+            
         self.addChild(levelCompleteScreen)
     }
     
@@ -316,12 +425,16 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     func triggerGameOver() {
         
         gameState = .GameOver
+        pauseButton.removeFromParent()
         gamePhysicsNode.stopAction(actionFollow)
         
+        for child in level.children {
+            child.stopAllActions()
+        }
+        
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         hero.physicsBody.velocity.x = 0
         hero.physicsBody.velocity.y = 0
-        
-        gameState = .GameOver
         
         
         if let jumpScheduler = jumpScheduler {
@@ -329,13 +442,19 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
         
         // CCDirector.sharedDirector().pause()
-        var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
-        self.addChild(gameOverScreen)
+        let spawnGameOverMenuAction = CCActionCallBlock.actionWithBlock({
+            var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
+            self.addChild(gameOverScreen)
+
+        }) as! CCActionCallBlock
         
-        
+        self.runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5), spawnGameOverMenuAction]))
+
+        //var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
+        //self.addChild(gameOverScreen)
     }
     
-    func retryLevel() {
+    func retryLevel(note: NSNotification) {
 
         var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
         gameScene.level = CCBReader.load(level.currentLevel) as! Level
@@ -346,7 +465,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         CCDirector.sharedDirector().replaceScene(scene, withTransition: CCTransition(moveInWithDirection: CCTransitionDirection(rawValue: 2)!, duration: 1.0))
     }
     
-    func loadNextLevel() {
+    func loadNextLevel(note: NSNotification) {
         
         var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
         gameScene.level = CCBReader.load(level.nextLevel) as! Level
@@ -359,7 +478,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
 
-    func resumeLevel() {
+    func resumeLevel(note: NSNotification) {
         
         //animation has call back that will remove pauseMenu Node from gameScene
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
@@ -370,7 +489,9 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
     
-    func loadMainMenu() {
+    
+    
+    func loadMainMenu(note: NSNotification) {
         
         var mainMenu = CCBReader.load("MainScene")
         var scene = CCScene()
@@ -381,27 +502,31 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     //selector: toggles the sprites color
-    func toggleHeroColor() {
+    func toggleHeroColor(note: NSNotification) {
         hero.toggle()
     }
     
     
     func applyJump() {
         
-        if jumpTime == 0.7 {
-            hero.physicsBody.velocity.y = CGFloat(300)
-            jumpTime -= 0.08
-        }
-        else if jumpTime > 0.0 {
-            
-            
-            hero.physicsBody.velocity.y = CGFloat(jumpTime * 10 * 50)
-            
-            jumpTime -= 0.02
-        }  else {
-            jumpScheduler!.invalidate()
-            //hero.state = .Fall
-            
+        if gameState == .Play {
+            heroState = .Jump
+            if jumpTime == 0.7 {
+                hero.physicsBody.velocity.y = CGFloat(300)
+                jumpTime -= 0.06
+
+            }
+            else if jumpTime > 0.0 {
+                
+                hero.physicsBody.velocity.y = CGFloat(jumpTime * 10 * 50)
+                jumpTime -= 0.015
+                
+            }  else {
+                
+                jumpScheduler!.invalidate()
+                //heroState = .Fall
+                
+            }
         }
         
         
@@ -427,7 +552,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             //reset jump timer for next jump
             jumpTime = 0.7
 
-            hero.state = .Run
+            heroState = .Run
             
             return true
         }
@@ -435,12 +560,12 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, normalPlatform: CCNode!) -> ObjCBool {
         
-        if hero.state != .Idle {
+        if heroState != .Idle {
 
             hero.runAnim()
         }
         
-        hero.state = .Run
+        heroState = .Run
         
         //reset jump timer for next jump
         jumpTime = 0.7
@@ -466,7 +591,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             //reset jump timer for next jump
             jumpTime = 0.7
 
-            hero.state = .Run
+            heroState = .Run
             
             return true
             
@@ -477,10 +602,18 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, blackSpike: CCSprite!) -> ObjCBool {
         
         if hero.colorMode == "black" {
+            
             return false
+            
         }
         else {
-            triggerGameOver()
+            
+            if gameState != .GameOver {
+                
+                triggerGameOver()
+                
+            }
+            
             return true
         }
     }
@@ -489,24 +622,41 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, whiteSpike: CCSprite!) -> ObjCBool {
         
         if hero.colorMode == "white" {
-                return false
+            
+            return false
             
         } else {
             
-            triggerGameOver()
+            if gameState != .GameOver {
+                
+                triggerGameOver()
+                
+            }
+            
             return true
         }
     }
     
+    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, endPortal: CCSprite!) -> ObjCBool {
     
+        hero.physicsBody.velocity = CGPointZero
+        
+        if gameState != .GameWon {
+            
+            let triggerWin = CCActionCallFunc(target: self, selector: Selector("triggerLevelWon"))
+            let moveToPlatform = CCActionMoveTo(duration: 1.0, position: CGPointMake(level.endPortal.position.x, level.endPortal.position.y + level.endPortal.boundingBox().height))
+            
+            hero.runAction(CCActionSequence(array: [moveToPlatform, triggerWin]))
+                        
+        }
+        gameState = .GameWon
+        
 
-    
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, princess: CCSprite!) -> ObjCBool {
-
-        triggerLevelWon()
         return false
+        
     }
     
+
 }
 
 

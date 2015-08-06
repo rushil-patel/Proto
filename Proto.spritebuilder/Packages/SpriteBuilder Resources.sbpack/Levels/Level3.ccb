@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>112</integer>
+	<integer>113</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -283,7 +283,7 @@
 						<key>value</key>
 						<array>
 							<real>1.2502070665359497</real>
-							<real>0.49297946691513062</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2075,7 +2075,7 @@
 									<key>value</key>
 									<array>
 										<real>0.0</real>
-										<real>130</real>
+										<real>100</real>
 									</array>
 								</dict>
 								<dict>
@@ -2622,7 +2622,7 @@
 						<key>value</key>
 						<array>
 							<real>0.0</real>
-							<real>-5</real>
+							<real>43.216144561767578</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -2717,7 +2717,7 @@
 									<key>value</key>
 									<array>
 										<real>600</real>
-										<real>87.18365478515625</real>
+										<real>57.200000762939453</real>
 									</array>
 								</dict>
 								<dict>
@@ -3311,7 +3311,7 @@
 						<key>value</key>
 						<array>
 							<real>600</real>
-							<real>13</real>
+							<real>57.200000762939453</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -3355,6 +3355,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -3406,7 +3408,7 @@
 									<key>value</key>
 									<array>
 										<real>1020</real>
-										<real>87.18365478515625</real>
+										<real>57.200000762939453</real>
 									</array>
 								</dict>
 								<dict>
@@ -4036,7 +4038,7 @@
 						<key>value</key>
 						<array>
 							<real>1020</real>
-							<real>13</real>
+							<real>57.200000762939453</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -4129,7 +4131,7 @@
 									<key>value</key>
 									<array>
 										<real>420</real>
-										<real>130</real>
+										<real>100</real>
 									</array>
 								</dict>
 								<dict>
@@ -4676,7 +4678,7 @@
 						<key>value</key>
 						<array>
 							<real>420</real>
-							<real>-5</real>
+							<real>45.3125</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -4921,7 +4923,7 @@
 						<key>value</key>
 						<array>
 							<real>1.2502070665359497</real>
-							<real>0.49297946691513062</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -5118,7 +5120,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>3</real>
+			<real>0.76666665077209473</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

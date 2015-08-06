@@ -14,7 +14,7 @@
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
-	<integer>0</integer>
+	<integer>1</integer>
 	<key>currentSequenceId</key>
 	<integer>2</integer>
 	<key>docDimensionsType</key>
@@ -356,10 +356,10 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>100</real>
-							<integer>0</integer>
-							<integer>0</integer>
+							<real>0.17605634033679962</real>
+							<real>0.3125</real>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -612,7 +612,7 @@
 						<key>value</key>
 						<array>
 							<real>0.36161971092224121</real>
-							<real>0.08164532482624054</real>
+							<real>0.090625002980232239</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -625,10 +625,10 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>100</real>
-							<integer>0</integer>
-							<integer>0</integer>
+							<real>0.17605634033679962</real>
+							<real>0.3125</real>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -880,8 +880,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.3209073543548584</real>
-							<real>0.059932399541139603</real>
+							<real>0.32090872526168823</real>
+							<real>0.090625002980232239</real>
 							<integer>3</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -894,10 +894,10 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>100</real>
-							<real>100</real>
-							<integer>0</integer>
-							<integer>0</integer>
+							<real>0.17605634033679962</real>
+							<real>0.3125</real>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -946,6 +946,8 @@
 						<real>1</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1042,11 +1044,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>285.775390625</real>
-							<real>265.20004272460938</real>
+							<real>0.5</real>
+							<real>0.82999998331069946</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1355,7 +1357,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.86666667461395264</real>
+			<real>1</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

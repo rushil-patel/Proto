@@ -44,6 +44,7 @@
 		7A97911719E631C6001FFC4D /* libcocos2d-mac.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A97910419E62E40001FFC4D /* libcocos2d-mac.a */; };
 		7A97911819E631CD001FFC4D /* libcocos2d.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A9790FE19E62E40001FFC4D /* libcocos2d.a */; };
 		8392007A18EE8E3300B6C429 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8392007918EE8E3300B6C429 /* GLKit.framework */; };
+		8663AF6C3D0127C0BA5039D9 /* Pods_Proto_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D9B525D2A2C1FE607A4E00E /* Pods_Proto_iOS.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		927F61A5196C771E000F43EF /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3517B978D7009739AE /* OpenAL.framework */; };
 		927F61A9196C771E000F43EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3D17B978D7009739AE /* Foundation.framework */; };
 		927F61AA196C771E000F43EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B77F1B3F17B978D7009739AE /* CoreGraphics.framework */; };
@@ -101,6 +102,9 @@
 		D84EDA1C1B68251B00D31EB2 /* ColorToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84EDA1B1B68251B00D31EB2 /* ColorToggle.swift */; };
 		D86F69F71B56134E00858277 /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F69F61B56134E00858277 /* GamePlayScene.swift */; };
 		D86F69FD1B5619FA00858277 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F69FC1B5619FA00858277 /* Hero.swift */; };
+		D871CF271B70898E009D468E /* LevelSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871CF261B70898E009D468E /* LevelSelectScene.swift */; };
+		D871CF2B1B71A12A009D468E /* NextHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871CF2A1B71A12A009D468E /* NextHud.swift */; };
+		D871CF2D1B726B67009D468E /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871CF2C1B726B67009D468E /* UserState.swift */; };
 		D87DC9FF1B56D0BB0015B8B1 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DC9FE1B56D0BB0015B8B1 /* Platform.swift */; };
 		D8C308F01B587E5400FDF948 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C308EF1B587E5400FDF948 /* GameOverScene.swift */; };
 		D8C4C0AF1B647F9400824BEA /* LevelCompleteScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C4C0AE1B647F9400824BEA /* LevelCompleteScene.swift */; };
@@ -170,6 +174,7 @@
 		5B121033197485FE004C1E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/Android/Info.plist; sourceTree = "<group>"; };
 		5B121034197485FE004C1E1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/iOS/Info.plist; sourceTree = "<group>"; };
 		5BA4619E1974C88900785744 /* AndroidManifest.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AndroidManifest.xml; path = Platforms/Android/AndroidManifest.xml; sourceTree = "<group>"; };
+		6DDB6B2C502A29F73F53BB81 /* Pods-Proto iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proto iOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-Proto iOS/Pods-Proto iOS.release.xcconfig"; sourceTree = "<group>"; };
 		7A046D7519E84C36004C4763 /* MainScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainScene.swift; path = Source/MainScene.swift; sourceTree = "<group>"; };
 		7A4035FF19DDEE84007B6E8F /* Proto Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proto Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A40360219DDEE84007B6E8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Platforms/Mac/Info.plist; sourceTree = "<group>"; };
@@ -183,6 +188,7 @@
 		7AFCD5DB19E9BD9F00BCCCDA /* cocos2d.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = cocos2d.h; path = "Source/libs/cocos2d-iphone/cocos2d/cocos2d.h"; sourceTree = "<group>"; };
 		7AFCD5DD19E9BDC200BCCCDA /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Bridging-Header.h"; path = "Source/Bridging-Header.h"; sourceTree = "<group>"; };
 		7BF6AF9F1A425F9800FFF9BA /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../../../../Library/SBAndroid/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
+		7D9B525D2A2C1FE607A4E00E /* Pods_Proto_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Proto_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8392007918EE8E3300B6C429 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		927F61BF196C771E000F43EF /* Proto Android.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Proto Android.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B71F5907188484E7003F4D28 /* iPad-old.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "iPad-old.png"; path = "Icons/iPad-old.png"; sourceTree = "<group>"; };
@@ -222,6 +228,7 @@
 		BC5399D51A44DCC90063F482 /* GLActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLActivityKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/GLActivityKit.framework"; sourceTree = "<group>"; };
 		BC5399D61A44DCC90063F482 /* JavaFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaFoundation.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaFoundation.framework"; sourceTree = "<group>"; };
 		BC5399D71A44DCC90063F482 /* JavaKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaKit.framework; path = "../../../../Library/Application Support/Developer/Shared/Xcode/Platforms/Android.platform/Developer/SDKs/SBAndroid.sdk/System/Library/Frameworks/JavaKit.framework"; sourceTree = "<group>"; };
+		C73E21683EDC7382CBB4EB25 /* Pods-Proto iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Proto iOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Proto iOS/Pods-Proto iOS.debug.xcconfig"; sourceTree = "<group>"; };
 		D352B48019EC608A00829775 /* MetalShaders */ = {isa = PBXFileReference; lastKnownFileType = folder; name = MetalShaders; path = Source/MetalShaders; sourceTree = "<group>"; };
 		D81EA9D31B6AAA4F0084EC70 /* HomeHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeHud.swift; sourceTree = "<group>"; };
 		D81EA9D71B6AAB070084EC70 /* RetryHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RetryHud.swift; sourceTree = "<group>"; };
@@ -231,6 +238,9 @@
 		D84EDA1B1B68251B00D31EB2 /* ColorToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorToggle.swift; sourceTree = "<group>"; };
 		D86F69F61B56134E00858277 /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayScene.swift; sourceTree = "<group>"; };
 		D86F69FC1B5619FA00858277 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
+		D871CF261B70898E009D468E /* LevelSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectScene.swift; sourceTree = "<group>"; };
+		D871CF2A1B71A12A009D468E /* NextHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextHud.swift; sourceTree = "<group>"; };
+		D871CF2C1B726B67009D468E /* UserState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
 		D87DC9FE1B56D0BB0015B8B1 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		D8C308EF1B587E5400FDF948 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		D8C4C0AE1B647F9400824BEA /* LevelCompleteScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCompleteScene.swift; sourceTree = "<group>"; };
@@ -289,6 +299,7 @@
 				B77F1B3E17B978D7009739AE /* Foundation.framework in Frameworks */,
 				B77F1B4017B978D7009739AE /* CoreGraphics.framework in Frameworks */,
 				B77F1B4217B978D7009739AE /* CoreText.framework in Frameworks */,
+				8663AF6C3D0127C0BA5039D9 /* Pods_Proto_iOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +458,15 @@
 			name = Mac;
 			sourceTree = "<group>";
 		};
+		829741A4800C1D22FF2A8659 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C73E21683EDC7382CBB4EB25 /* Pods-Proto iOS.debug.xcconfig */,
+				6DDB6B2C502A29F73F53BB81 /* Pods-Proto iOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		9222E2B918734FF800A246C7 /* libs */ = {
 			isa = PBXGroup;
 			children = (
@@ -460,12 +480,15 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
+				D871CF261B70898E009D468E /* LevelSelectScene.swift */,
 				D8C4C0B21B6484A200824BEA /* Level.swift */,
+				D871CF2C1B726B67009D468E /* UserState.swift */,
 				D8C4C0AE1B647F9400824BEA /* LevelCompleteScene.swift */,
 				D87DC9FE1B56D0BB0015B8B1 /* Platform.swift */,
 				D8C308EF1B587E5400FDF948 /* GameOverScene.swift */,
 				D86F69F61B56134E00858277 /* GamePlayScene.swift */,
 				D81EA9DB1B6AD4FB0084EC70 /* PauseScene.swift */,
+				D871CF2A1B71A12A009D468E /* NextHud.swift */,
 				D81EA9E31B6BD3AF0084EC70 /* TutorialScene.swift */,
 				D86F69FC1B5619FA00858277 /* Hero.swift */,
 				D84EDA1B1B68251B00D31EB2 /* ColorToggle.swift */,
@@ -507,6 +530,7 @@
 				B77F1CCF17B978D8009739AE /* Supporting Files */,
 				B77F1B3017B978D7009739AE /* Frameworks */,
 				B77F1B2F17B978D7009739AE /* Products */,
+				829741A4800C1D22FF2A8659 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -544,6 +568,7 @@
 				B77F1B3D17B978D7009739AE /* Foundation.framework */,
 				B77F1B3F17B978D7009739AE /* CoreGraphics.framework */,
 				B77F1B4117B978D7009739AE /* CoreText.framework */,
+				7D9B525D2A2C1FE607A4E00E /* Pods_Proto_iOS.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -616,11 +641,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B77F1CDE17B978D8009739AE /* Build configuration list for PBXNativeTarget "Proto iOS" */;
 			buildPhases = (
+				1656AD80E2413C7F1FCD807D /* Check Pods Manifest.lock */,
 				D2E0167A18D782EC00927430 /* Run Script */,
 				B77F1B2A17B978D7009739AE /* Sources */,
 				B77F1B2B17B978D7009739AE /* Frameworks */,
 				D352B47A19EC5D8A00829775 /* Compile Metal Shaders */,
 				B77F1B2C17B978D7009739AE /* Resources */,
+				45ABF1A5CE5F17ADB93E9486 /* Embed Pods Frameworks */,
+				20C5DD69C6A0F445A9C03B41 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -782,6 +810,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1656AD80E2413C7F1FCD807D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		20C5DD69C6A0F445A9C03B41 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Proto iOS/Pods-Proto iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45ABF1A5CE5F17ADB93E9486 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Proto iOS/Pods-Proto iOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		927F619B196C771E000F43EF /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -849,13 +922,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D871CF2D1B726B67009D468E /* UserState.swift in Sources */,
 				D87DC9FF1B56D0BB0015B8B1 /* Platform.swift in Sources */,
 				D81EA9D41B6AAA4F0084EC70 /* HomeHud.swift in Sources */,
+				D871CF2B1B71A12A009D468E /* NextHud.swift in Sources */,
 				D86F69FD1B5619FA00858277 /* Hero.swift in Sources */,
 				D8C4C0AF1B647F9400824BEA /* LevelCompleteScene.swift in Sources */,
 				D81EA9E41B6BD3AF0084EC70 /* TutorialScene.swift in Sources */,
 				D84EDA1C1B68251B00D31EB2 /* ColorToggle.swift in Sources */,
 				D81EA9D81B6AAB070084EC70 /* RetryHud.swift in Sources */,
+				D871CF271B70898E009D468E /* LevelSelectScene.swift in Sources */,
 				D8C308F01B587E5400FDF948 /* GameOverScene.swift in Sources */,
 				D81EA9DC1B6AD4FB0084EC70 /* PauseScene.swift in Sources */,
 				D81EA9DA1B6AAB600084EC70 /* ResumeHud.swift in Sources */,
@@ -1142,6 +1218,7 @@
 		};
 		B77F1CDF17B978D8009739AE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C73E21683EDC7382CBB4EB25 /* Pods-Proto iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1158,6 +1235,7 @@
 					"Source/libs/cocos2d-iphone/external/Chipmunk/include",
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = Source/Resources/Platforms/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1166,6 +1244,7 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = Proto;
 				PROVISIONING_PROFILE = "";
@@ -1177,6 +1256,7 @@
 		};
 		B77F1CE017B978D8009739AE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DDB6B2C502A29F73F53BB81 /* Pods-Proto iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_MODULES = YES;
@@ -1192,6 +1272,7 @@
 					"Source/libs/cocos2d-iphone/external/Chipmunk/include",
 					"\"Source/libs/cocos2d-iphone/cocos2d-ui\"/**",
 					"\"Source/libs/cocos2d-iphone/external/ObjectAL\"/**",
+					"$(inherited)",
 				);
 				INFOPLIST_FILE = Source/Resources/Platforms/iOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -1199,6 +1280,7 @@
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-ObjC",
+					"$(inherited)",
 				);
 				PRODUCT_NAME = Proto;
 				PROVISIONING_PROFILE = "";

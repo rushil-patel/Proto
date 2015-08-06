@@ -8,21 +8,19 @@
 
 import Foundation
 
+enum Action {
+    case Run, Jump, Idle, Fall
+}
+
 class Hero: CCSprite {
     
     //Custom Properties
     var colorMode: String = ""
     
-    //Finite State
-    var state: Action!
-    var powerState: PowerState = .None
-    
     //Hero constants
     let lift: CGFloat = 5000.0
     
     func didLoadFromCCB() {
-        
-        state = .Idle
         
         self.scale = 0.3
     }
