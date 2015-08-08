@@ -43,7 +43,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     weak var cameraTargetNode: CCNode!
     weak var pauseButton: CCButton!
     weak var gameTimerLabel: CCLabelTTF!
-    
+    weak var deathFlashNode: CCNode!
     var pauseMenu: PauseScene!
     
     //gameplay physics node connection
@@ -60,6 +60,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     var gameTimer: Double = 0.0
     var heroState: HeroAction = .Idle {
         willSet(newValue) {
+            
             if newValue == .Idle && heroState != .Idle {
                 //do nothing
             } else if newValue == .Jump && heroState != .Jump {
@@ -133,7 +134,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         super.onEnter()
         
         if level == nil {
-            level = CCBReader.load("Levels/Level1-1") as! Level
+            level = CCBReader.load("Levels/Level1") as! Level
         }
         
         //level will be set from previous level
@@ -291,6 +292,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         gameState = .Pause
         hero.physicsBody.velocity = CGPointZero
         
+        
         pauseButton.visible = false
         pauseMenu = CCBReader.load("PauseScene") as! PauseScene
         pauseMenu.cascadeOpacityEnabled = true
@@ -365,7 +367,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 levelCompleteScreen.animationManager.runAnimationsForSequenceNamed("spawn3Stars")
                 if let mostStarsEarned = starsDictionary[level.currentLevel] {
                     
-                    if mostStarsEarned < 3 {
+                    if mostStarsEarned <= 3 {
                         
                         userActivityState.updateStarsEarned(3, levelKey: level.currentLevel)
                         
@@ -373,7 +375,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                     
                 } else {
                     
-                    userActivityState.updateStarsEarned(1, levelKey: level.currentLevel)
+                    userActivityState.updateStarsEarned(3, levelKey: level.currentLevel)
                 }
                 
             } else if currentTime < 1.5 * level.threeStarTime {
@@ -390,7 +392,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                     
                 } else {
                     
-                    userActivityState.updateStarsEarned(1, levelKey: level.currentLevel)
+                    userActivityState.updateStarsEarned(2, levelKey: level.currentLevel)
                 }
                 
 
@@ -428,6 +430,10 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         pauseButton.removeFromParent()
         gamePhysicsNode.stopAction(actionFollow)
         
+        hero.physicsBody.velocity = CGPointZero
+        hero.deadAnim()
+        hero.physicsBody.type = CCPhysicsBodyType(rawValue: 2)!
+        
         for child in level.children {
             child.stopAllActions()
         }
@@ -441,20 +447,39 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             jumpScheduler.invalidate()
         }
         
-        // CCDirector.sharedDirector().pause()
+        if hero.colorMode == "white" {
+            deathFlashNode.colorRGBA = CCColor(red: 1.0, green: 1.0, blue: 1.0)
+            
+        } else if hero.colorMode == "black" {
+            deathFlashNode.colorRGBA = CCColor(red: 0.0, green: 0.0, blue: 0.0)
+        }
+        deathFlashNode.runAction(CCActionSequence(array: [CCActionFadeIn(duration: 0.2), CCActionFadeOut(duration: 0.2)]))
+
+        /*
         let spawnGameOverMenuAction = CCActionCallBlock.actionWithBlock({
             var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
             self.addChild(gameOverScreen)
 
         }) as! CCActionCallBlock
+        */
         
-        self.runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5), spawnGameOverMenuAction]))
+        let restartLevel = CCActionCallBlock {
+            
+            var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
+            gameScene.level = CCBReader.load(self.level.currentLevel) as! Level
+            
+            var scene = CCScene()
+            scene.addChild(gameScene)
+            CCDirector.sharedDirector().replaceScene(scene)
+        }
+        
+        self.runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5), restartLevel]))
 
         //var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
         //self.addChild(gameOverScreen)
     }
     
-    func retryLevel(note: NSNotification) {
+    func retryLevel(notification: NSNotification) {
 
         var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
         gameScene.level = CCBReader.load(level.currentLevel) as! Level
@@ -465,7 +490,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         CCDirector.sharedDirector().replaceScene(scene, withTransition: CCTransition(moveInWithDirection: CCTransitionDirection(rawValue: 2)!, duration: 1.0))
     }
     
-    func loadNextLevel(note: NSNotification) {
+    func loadNextLevel(notification: NSNotification) {
         
         var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
         gameScene.level = CCBReader.load(level.nextLevel) as! Level
@@ -478,7 +503,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
 
-    func resumeLevel(note: NSNotification) {
+    func resumeLevel(notification: NSNotification) {
         
         //animation has call back that will remove pauseMenu Node from gameScene
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
@@ -491,7 +516,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     
-    func loadMainMenu(note: NSNotification) {
+    func loadMainMenu(notification: NSNotification) {
         
         var mainMenu = CCBReader.load("MainScene")
         var scene = CCScene()
@@ -502,7 +527,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     //selector: toggles the sprites color
-    func toggleHeroColor(note: NSNotification) {
+    func toggleHeroColor(notification: NSNotification) {
         hero.toggle()
     }
     
@@ -524,7 +549,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             }  else {
                 
                 jumpScheduler!.invalidate()
-                //heroState = .Fall
                 
             }
         }
@@ -648,7 +672,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             hero.runAction(CCActionSequence(array: [moveToPlatform, triggerWin]))
                         
-        }
+        } 
         gameState = .GameWon
         
 

@@ -68,6 +68,19 @@ class Hero: CCSprite {
         }
     }
     
+    func deadAnim() {
+        
+        if self.colorMode == "black" {
+           
+            self.animationManager.runAnimationsForSequenceNamed("DeadBlack")
+            
+        } else if self.colorMode == "white" {
+            
+            self.animationManager.runAnimationsForSequenceNamed("WhiteBlack")
+            
+        }
+    }
+    
     
     // toggles hero's sprite (color) and animation sprite frame from current
     // to other

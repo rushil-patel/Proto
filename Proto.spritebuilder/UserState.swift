@@ -15,6 +15,22 @@ class UserState {
     var starsEarned: [NSObject : AnyObject] = NSUserDefaults.standardUserDefaults().dictionaryForKey("starsEarnedDictionary") ?? [NSObject : AnyObject]()
 
     
+    init() {
+        
+        NSUserDefaults.standardUserDefaults().setObject(bestTimes, forKey: "bestTimesDictionary")
+        NSUserDefaults.standardUserDefaults().setObject(starsEarned, forKey: "starsEarnedDictionary")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+    }
+    
+    func resetUserState() {
+        
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("bestTimesDictionary")
+        NSUserDefaults.standardUserDefaults().removeObjectForKey("starsEarnedDictionary")
+        NSUserDefaults.standardUserDefaults().synchronize()
+        
+    }
+    
     func updateBestTimes(levelKey: String, timeValue: String) {
         
         //add/update key value pair to the persistent dictionary
@@ -34,14 +50,7 @@ class UserState {
 
     }
     
-    init() {
-        
-        NSUserDefaults.standardUserDefaults().setObject(bestTimes, forKey: "bestTimesDictionary")
-        NSUserDefaults.standardUserDefaults().setObject(starsEarned, forKey: "starsEarnedDictionary")
-        NSUserDefaults.standardUserDefaults().synchronize()
-        
-        
-        
-    }
+    
+   
     
 }

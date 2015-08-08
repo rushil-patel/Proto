@@ -8,8 +8,12 @@
 
 import Foundation
 
-class ColorToggle: CCNode {
+class ColorToggle: CCSprite {
     
+    var colorMode = "black"
+    
+    weak var switchButtonBlack: CCSprite!
+    weak var switchButtonWhite: CCSprite!
     
     func didLoadFromCCB() {
         
@@ -20,6 +24,19 @@ class ColorToggle: CCNode {
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
             
         NSNotificationCenter.defaultCenter().postNotificationName("color_toggle", object: nil)
+        
+        if colorMode == "black" {
+            colorMode = "white"
+            switchButtonBlack.visible = false
+            switchButtonWhite.visible = true
+            
+        } else if colorMode == "white" {
+            colorMode = "black"
+            switchButtonBlack.visible = true
+            switchButtonWhite.visible = false
+    
+        }
+        
     }
     
     

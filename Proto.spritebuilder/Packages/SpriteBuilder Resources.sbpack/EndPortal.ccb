@@ -135,7 +135,7 @@
 					<key>density</key>
 					<real>1</real>
 					<key>dynamic</key>
-					<true/>
+					<false/>
 					<key>elasticity</key>
 					<real>0.30000001192092896</real>
 					<key>friction</key>
@@ -158,10 +158,18 @@
 							<real>94.808952331542969</real>
 							<real>6.0811223983764648</real>
 						</array>
+						<array>
+							<real>55.996124267578125</real>
+							<real>3.7672250270843506</real>
+						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
+							<array>
+								<real>55.996124267578125</real>
+								<real>3.7672250270843506</real>
+							</array>
 							<array>
 								<real>94.808952331542969</real>
 								<real>6.0811223983764648</real>
@@ -375,6 +383,8 @@
 				<array/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

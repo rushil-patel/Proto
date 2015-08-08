@@ -100,11 +100,14 @@
 		D81EA9DC1B6AD4FB0084EC70 /* PauseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EA9DB1B6AD4FB0084EC70 /* PauseScene.swift */; };
 		D81EA9E41B6BD3AF0084EC70 /* TutorialScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81EA9E31B6BD3AF0084EC70 /* TutorialScene.swift */; };
 		D84EDA1C1B68251B00D31EB2 /* ColorToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D84EDA1B1B68251B00D31EB2 /* ColorToggle.swift */; };
+		D86F06B31B7590380038A806 /* InstructionalPlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F06B21B7590380038A806 /* InstructionalPlayScene.swift */; };
 		D86F69F71B56134E00858277 /* GamePlayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F69F61B56134E00858277 /* GamePlayScene.swift */; };
 		D86F69FD1B5619FA00858277 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = D86F69FC1B5619FA00858277 /* Hero.swift */; };
 		D871CF271B70898E009D468E /* LevelSelectScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871CF261B70898E009D468E /* LevelSelectScene.swift */; };
 		D871CF2B1B71A12A009D468E /* NextHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871CF2A1B71A12A009D468E /* NextHud.swift */; };
 		D871CF2D1B726B67009D468E /* UserState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D871CF2C1B726B67009D468E /* UserState.swift */; };
+		D878C0AC1B7479FA004937C0 /* LevelSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D878C0AB1B7479FA004937C0 /* LevelSquare.swift */; };
+		D878C0B01B751CCA004937C0 /* LevelSelectContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = D878C0AF1B751CCA004937C0 /* LevelSelectContent.swift */; };
 		D87DC9FF1B56D0BB0015B8B1 /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87DC9FE1B56D0BB0015B8B1 /* Platform.swift */; };
 		D8C308F01B587E5400FDF948 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C308EF1B587E5400FDF948 /* GameOverScene.swift */; };
 		D8C4C0AF1B647F9400824BEA /* LevelCompleteScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C4C0AE1B647F9400824BEA /* LevelCompleteScene.swift */; };
@@ -236,11 +239,14 @@
 		D81EA9DB1B6AD4FB0084EC70 /* PauseScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PauseScene.swift; sourceTree = "<group>"; };
 		D81EA9E31B6BD3AF0084EC70 /* TutorialScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialScene.swift; sourceTree = "<group>"; };
 		D84EDA1B1B68251B00D31EB2 /* ColorToggle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorToggle.swift; sourceTree = "<group>"; };
+		D86F06B21B7590380038A806 /* InstructionalPlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstructionalPlayScene.swift; sourceTree = "<group>"; };
 		D86F69F61B56134E00858277 /* GamePlayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayScene.swift; sourceTree = "<group>"; };
 		D86F69FC1B5619FA00858277 /* Hero.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		D871CF261B70898E009D468E /* LevelSelectScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectScene.swift; sourceTree = "<group>"; };
 		D871CF2A1B71A12A009D468E /* NextHud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NextHud.swift; sourceTree = "<group>"; };
 		D871CF2C1B726B67009D468E /* UserState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserState.swift; sourceTree = "<group>"; };
+		D878C0AB1B7479FA004937C0 /* LevelSquare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSquare.swift; sourceTree = "<group>"; };
+		D878C0AF1B751CCA004937C0 /* LevelSelectContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectContent.swift; sourceTree = "<group>"; };
 		D87DC9FE1B56D0BB0015B8B1 /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
 		D8C308EF1B587E5400FDF948 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverScene.swift; sourceTree = "<group>"; };
 		D8C4C0AE1B647F9400824BEA /* LevelCompleteScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelCompleteScene.swift; sourceTree = "<group>"; };
@@ -480,17 +486,20 @@
 			children = (
 				7A40362019DDEF0D007B6E8F /* Platforms */,
 				7A046D7519E84C36004C4763 /* MainScene.swift */,
-				D871CF261B70898E009D468E /* LevelSelectScene.swift */,
 				D8C4C0B21B6484A200824BEA /* Level.swift */,
 				D871CF2C1B726B67009D468E /* UserState.swift */,
 				D8C4C0AE1B647F9400824BEA /* LevelCompleteScene.swift */,
 				D87DC9FE1B56D0BB0015B8B1 /* Platform.swift */,
-				D8C308EF1B587E5400FDF948 /* GameOverScene.swift */,
 				D86F69F61B56134E00858277 /* GamePlayScene.swift */,
+				D8C308EF1B587E5400FDF948 /* GameOverScene.swift */,
 				D81EA9DB1B6AD4FB0084EC70 /* PauseScene.swift */,
 				D871CF2A1B71A12A009D468E /* NextHud.swift */,
 				D81EA9E31B6BD3AF0084EC70 /* TutorialScene.swift */,
+				D878C0AB1B7479FA004937C0 /* LevelSquare.swift */,
+				D86F06B21B7590380038A806 /* InstructionalPlayScene.swift */,
 				D86F69FC1B5619FA00858277 /* Hero.swift */,
+				D871CF261B70898E009D468E /* LevelSelectScene.swift */,
+				D878C0AF1B751CCA004937C0 /* LevelSelectContent.swift */,
 				D84EDA1B1B68251B00D31EB2 /* ColorToggle.swift */,
 				D81EA9D31B6AAA4F0084EC70 /* HomeHud.swift */,
 				D81EA9D71B6AAB070084EC70 /* RetryHud.swift */,
@@ -929,9 +938,12 @@
 				D86F69FD1B5619FA00858277 /* Hero.swift in Sources */,
 				D8C4C0AF1B647F9400824BEA /* LevelCompleteScene.swift in Sources */,
 				D81EA9E41B6BD3AF0084EC70 /* TutorialScene.swift in Sources */,
+				D878C0AC1B7479FA004937C0 /* LevelSquare.swift in Sources */,
 				D84EDA1C1B68251B00D31EB2 /* ColorToggle.swift in Sources */,
 				D81EA9D81B6AAB070084EC70 /* RetryHud.swift in Sources */,
+				D878C0B01B751CCA004937C0 /* LevelSelectContent.swift in Sources */,
 				D871CF271B70898E009D468E /* LevelSelectScene.swift in Sources */,
+				D86F06B31B7590380038A806 /* InstructionalPlayScene.swift in Sources */,
 				D8C308F01B587E5400FDF948 /* GameOverScene.swift in Sources */,
 				D81EA9DC1B6AD4FB0084EC70 /* PauseScene.swift in Sources */,
 				D81EA9DA1B6AAB600084EC70 /* ResumeHud.swift in Sources */,
@@ -1221,6 +1233,8 @@
 			baseConfigurationReference = C73E21683EDC7382CBB4EB25 /* Pods-Proto iOS.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1259,6 +1273,8 @@
 			baseConfigurationReference = 6DDB6B2C502A29F73F53BB81 /* Pods-Proto iOS.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";

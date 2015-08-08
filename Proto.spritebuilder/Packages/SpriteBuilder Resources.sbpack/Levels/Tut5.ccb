@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>15</integer>
+	<integer>20</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,15 +41,15 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>14</integer>
+				<integer>19</integer>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCNodeGradient</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>lvl1</string>
+				<string>CCNodeGradient</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -80,6 +80,19 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<integer>2</integer>
+							<integer>2</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -96,56 +109,52 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>2.9995298385620117</real>
-							<real>1.0070891380310059</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>spriteFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string>Assets/lvl1.png</string>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>normalMapSpriteFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string></string>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
+						<string>startColor</string>
 						<key>type</key>
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
+							<real>0.16918163001537323</real>
+							<real>0.78098273277282715</real>
+							<real>0.87000000476837158</real>
 							<real>1</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>effects</string>
+						<string>endColor</string>
 						<key>type</key>
-						<string>EffectControl</string>
+						<string>Color3</string>
 						<key>value</key>
-						<array/>
+						<array>
+							<real>0.12999999523162842</real>
+							<real>0.5</real>
+							<real>0.80000001192092896</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>vector</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>-1</real>
+						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -197,24 +206,24 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>6003.07275390625</real>
-							<real>106.95517730712891</real>
+							<real>887.14361572265625</real>
+							<real>107.20608520507812</real>
 						</array>
 						<array>
-							<real>6002.109375</real>
-							<real>0.0</real>
+							<real>886.13580322265625</real>
+							<real>0.82026678323745728</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>6002.109375</real>
-								<real>0.0</real>
+								<real>886.13580322265625</real>
+								<real>0.82026678323745728</real>
 							</array>
 							<array>
-								<real>6003.07275390625</real>
-								<real>106.95517730712891</real>
+								<real>887.14361572265625</real>
+								<real>107.20608520507812</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -258,7 +267,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>3.5211267471313477</real>
+							<real>1</real>
 							<real>0.33281248807907104</real>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -282,7 +291,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.05139533057808876</real>
+							<real>1</real>
 							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
@@ -321,7 +330,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>WhitePlaform</string>
+				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -343,8 +352,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>308.37197875976562</real>
-							<real>0.0</real>
+							<real>264</real>
+							<real>83.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -357,8 +366,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.25</real>
-							<real>0.5</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -369,7 +378,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>WhitePlatform.ccb</string>
+						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -383,7 +392,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>BlackPlatform</string>
+				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -405,8 +414,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>559.8719482421875</real>
-							<real>0.0</real>
+							<real>324.47607421875</real>
+							<real>78.509552001953125</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -419,8 +428,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.25</real>
-							<real>0.5</real>
+							<real>1.0158686637878418</real>
+							<real>0.84198522567749023</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -431,7 +440,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>BlackPlatform.ccb</string>
+						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -445,7 +454,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>WhitePlaform</string>
+				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -467,8 +476,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>811.3719482421875</real>
-							<real>0.0</real>
+							<real>385</real>
+							<real>83.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -481,8 +490,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.25</real>
-							<real>0.5</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -493,7 +502,7 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>WhitePlatform.ccb</string>
+						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
 			</dict>
@@ -507,7 +516,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>BlackPlatform</string>
+				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -529,8 +538,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1062.8719482421875</real>
-							<real>0.0</real>
+							<real>358.82254028320312</real>
+							<real>133.25045776367188</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -543,8 +552,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.25</real>
-							<real>0.5</real>
+							<real>1.1525158882141113</real>
+							<real>1.1525158882141113</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -555,90 +564,25 @@
 						<key>type</key>
 						<string>CCBFile</string>
 						<key>value</key>
-						<string>BlackPlatform.ccb</string>
+						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>12</integer>
+				<integer>10</integer>
 				<key>baseClass</key>
-				<string>CCNodeColor</string>
+				<string>CCBFile</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>CCNodeColor</string>
+				<string>CCBFile</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
-				<key>physicsBody</key>
-				<dict>
-					<key>affectedByGravity</key>
-					<true/>
-					<key>allowsRotation</key>
-					<true/>
-					<key>bodyShape</key>
-					<integer>0</integer>
-					<key>collisionCategories</key>
-					<array/>
-					<key>collisionMask</key>
-					<array/>
-					<key>collisionType</key>
-					<string>normalPlatform</string>
-					<key>cornerRadius</key>
-					<real>0.0</real>
-					<key>density</key>
-					<real>1</real>
-					<key>dynamic</key>
-					<false/>
-					<key>elasticity</key>
-					<real>0.30000001192092896</real>
-					<key>friction</key>
-					<real>0.0</real>
-					<key>points</key>
-					<array>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-						<array>
-							<real>0.0</real>
-							<real>106.5</real>
-						</array>
-						<array>
-							<real>4000</real>
-							<real>106.5</real>
-						</array>
-						<array>
-							<real>4000</real>
-							<real>0.0</real>
-						</array>
-					</array>
-					<key>polygons</key>
-					<array>
-						<array>
-							<array>
-								<real>4000</real>
-								<real>0.0</real>
-							</array>
-							<array>
-								<real>4000</real>
-								<real>106.5</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>106.5</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-							</array>
-						</array>
-					</array>
-				</dict>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -656,35 +600,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1314.3719482421875</real>
-							<real>0.0</real>
+							<real>291.8687744140625</real>
+							<real>133.25045776367188</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>contentSize</string>
-						<key>type</key>
-						<string>Size</string>
-						<key>value</key>
-						<array>
-							<real>3.5211267471313477</real>
-							<real>0.33281248807907104</real>
-							<integer>2</integer>
-							<integer>2</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -694,38 +614,25 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.064952753484249115</real>
-							<real>0.5</real>
+							<real>1.1621756553649902</real>
+							<real>1.1621756553649902</real>
 							<false/>
 							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>color</string>
+						<string>ccbFile</string>
 						<key>type</key>
-						<string>Color3</string>
+						<string>CCBFile</string>
 						<key>value</key>
-						<array>
-							<real>0.5</real>
-							<real>0.49274855852127075</real>
-							<real>0.48300671577453613</real>
-							<real>0.80000001192092896</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>opacity</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.80000001192092896</real>
+						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
 			</dict>
 			<dict>
 				<key>UUID</key>
-				<integer>13</integer>
+				<integer>12</integer>
 				<key>baseClass</key>
 				<string>CCBFile</string>
 				<key>children</key>
@@ -734,6 +641,68 @@
 				<string></string>
 				<key>displayName</key>
 				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>325.73403930664062</real>
+							<real>193.70889282226562</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1.3688068389892578</real>
+							<real>1.3688068389892578</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>14</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>portal</string>
 				<key>memberVarAssignmentName</key>
 				<string>endPortal</string>
 				<key>memberVarAssignmentType</key>
@@ -755,11 +724,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1554.0001220703125</real>
-							<real>53.25</real>
+							<real>0.91100001335144043</real>
+							<real>0.16640624403953552</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -792,6 +761,26 @@
 		<array>
 			<dict>
 				<key>name</key>
+				<string>currentLevel</string>
+				<key>optimized</key>
+				<false/>
+				<key>type</key>
+				<integer>3</integer>
+				<key>value</key>
+				<string>Levels/Tut5</string>
+			</dict>
+			<dict>
+				<key>name</key>
+				<string>nextLevel</string>
+				<key>optimized</key>
+				<false/>
+				<key>type</key>
+				<integer>3</integer>
+				<key>value</key>
+				<string>Levels/Tut6</string>
+			</dict>
+			<dict>
+				<key>name</key>
 				<string>startPosX</string>
 				<key>optimized</key>
 				<false/>
@@ -812,33 +801,13 @@
 			</dict>
 			<dict>
 				<key>name</key>
-				<string>nextLevel</string>
-				<key>optimized</key>
-				<false/>
-				<key>type</key>
-				<integer>3</integer>
-				<key>value</key>
-				<string>Levels/Level4</string>
-			</dict>
-			<dict>
-				<key>name</key>
-				<string>currentLevel</string>
-				<key>optimized</key>
-				<false/>
-				<key>type</key>
-				<integer>3</integer>
-				<key>value</key>
-				<string>Levels/Level3</string>
-			</dict>
-			<dict>
-				<key>name</key>
 				<string>threeStarTime</string>
 				<key>optimized</key>
 				<false/>
 				<key>type</key>
 				<integer>1</integer>
 				<key>value</key>
-				<string>4.000000</string>
+				<string>100.000000</string>
 			</dict>
 		</array>
 		<key>displayName</key>
@@ -878,7 +847,7 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>1704</real>
+					<real>568</real>
 					<real>320</real>
 					<integer>0</integer>
 					<integer>0</integer>
@@ -909,8 +878,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -928,7 +895,7 @@
 			<key>scale</key>
 			<real>1</real>
 			<key>width</key>
-			<integer>1704</integer>
+			<integer>568</integer>
 		</dict>
 		<dict>
 			<key>centeredOrigin</key>
@@ -942,7 +909,7 @@
 			<key>scale</key>
 			<real>2</real>
 			<key>width</key>
-			<integer>1704</integer>
+			<integer>568</integer>
 		</dict>
 	</array>
 	<key>sequences</key>
@@ -966,7 +933,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>1.1333333253860474</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
@@ -987,6 +954,6 @@
 	<key>stageBorder</key>
 	<integer>1</integer>
 	<key>stageColor</key>
-	<integer>0</integer>
+	<integer>3</integer>
 </dict>
 </plist>

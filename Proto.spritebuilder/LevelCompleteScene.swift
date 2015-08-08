@@ -15,5 +15,8 @@ class LevelCompleteScene: CCNode {
     weak var homeButton: CCNode!
     weak var bestTimeLabel: CCLabelTTF!
     weak var currentTimeLabel: CCLabelTTF!
+    weak var currentTimeTextLabel: CCLabelTTF!
+    weak var bestTimeTextLabel: CCLabelTTF!
+
     
 }

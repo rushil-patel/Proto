@@ -10,13 +10,13 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>39</integer>
+	<integer>43</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>0</integer>
+	<integer>3</integer>
 	<key>docDimensionsType</key>
 	<integer>2</integer>
 	<key>fileType</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>28</integer>
+				<integer>42</integer>
 				<key>baseClass</key>
 				<string>CCNodeColor</string>
 				<key>children</key>
@@ -137,107 +137,8 @@
 						<real>0.64999997615814209</real>
 					</dict>
 				</array>
-				<key>seqExpanded</key>
+				<key>selected</key>
 				<true/>
-			</dict>
-			<dict>
-				<key>UUID</key>
-				<integer>33</integer>
-				<key>baseClass</key>
-				<string>CCNodeColor</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>CCNodeColor</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>name</string>
-						<key>type</key>
-						<string>StringSimple</string>
-						<key>value</key>
-						<string></string>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>contentSize</string>
-						<key>type</key>
-						<string>Size</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<integer>2</integer>
-							<integer>2</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>anchorPoint</string>
-						<key>type</key>
-						<string>Point</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>1.0002081394195557</real>
-							<real>1.004521369934082</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.094117648899555206</real>
-							<real>0.094117648899555206</real>
-							<real>0.094117648899555206</real>
-							<real>0.64999997615814209</real>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>opacity</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.64999997615814209</real>
-					</dict>
-				</array>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -669,7 +570,7 @@
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>currentTimeTextLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -877,7 +778,7 @@
 				<key>displayName</key>
 				<string>CCLabelTTF</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>bestTimeTextLabel</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1324,7 +1225,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.56666666269302368</real>
+									<real>0.66666668653488159</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1370,8 +1271,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.35857149958610535</real>
-							<real>0.70812505483627319</real>
+							<real>0.34976863861083984</real>
+							<real>0.71072918176651001</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -1400,8 +1301,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.72000002861022949</real>
+							<real>0.72000002861022949</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1414,7 +1315,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/star.png</string>
+							<string>Assets/miniLevelStar.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1630,7 +1531,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.3333333432674408</real>
+									<real>0.69999998807907104</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1648,7 +1549,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.89999997615814209</real>
+									<real>1.4666666984558105</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1694,8 +1595,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.52211225032806396</real>
-							<real>0.77062505483627319</real>
+							<real>0.51859116554260254</real>
+							<real>0.78104168176651001</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -1724,8 +1625,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.72000002861022949</real>
+							<real>0.72000002861022949</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -1738,7 +1639,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/star.png</string>
+							<string>Assets/miniLevelStar.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -1905,7 +1806,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>0.66666668653488159</real>
+									<real>1.6666666269302368</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1923,7 +1824,7 @@
 									<key>name</key>
 									<string>scale</string>
 									<key>time</key>
-									<real>1.2333333492279053</real>
+									<real>2.3666665554046631</real>
 									<key>type</key>
 									<integer>4</integer>
 									<key>value</key>
@@ -1999,8 +1900,8 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>0.75100713968276978</real>
+							<real>0.75100713968276978</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -2013,7 +1914,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/star.png</string>
+							<string>Assets/miniLevelStar.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -3199,13 +3100,13 @@
 			<key>chainedSequenceId</key>
 			<integer>-1</integer>
 			<key>length</key>
-			<real>1.2333333492279053</real>
+			<real>3.2333333492279053</real>
 			<key>name</key>
 			<string>spawn3Stars</string>
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.96666663885116577</real>
+			<real>2.2333333492279053</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

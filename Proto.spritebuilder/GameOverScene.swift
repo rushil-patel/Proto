@@ -14,3 +14,4 @@ class GameOverScene: CCNode {
     weak var retryButton: RetryHud!
     weak var homeButton: HomeHud!
 }
+
