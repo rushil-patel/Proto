@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>18</integer>
+	<integer>20</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,7 +41,7 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>9</integer>
+				<integer>19</integer>
 				<key>baseClass</key>
 				<string>CCNodeGradient</string>
 				<key>children</key>
@@ -153,146 +153,8 @@
 						</array>
 					</dict>
 				</array>
-			</dict>
-			<dict>
-				<key>UUID</key>
-				<integer>3</integer>
-				<key>baseClass</key>
-				<string>CCBFile</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>Platform</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>name</string>
-						<key>type</key>
-						<string>StringSimple</string>
-						<key>value</key>
-						<string></string>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>421.79998779296875</real>
-							<real>0.0</real>
-							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>0.317760169506073</real>
-							<real>0.5</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>rotation</string>
-						<key>type</key>
-						<string>Degrees</string>
-						<key>value</key>
-						<real>270</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ccbFile</string>
-						<key>type</key>
-						<string>CCBFile</string>
-						<key>value</key>
-						<string>WhitePlatform.ccb</string>
-					</dict>
-				</array>
-			</dict>
-			<dict>
-				<key>UUID</key>
-				<integer>2</integer>
-				<key>baseClass</key>
-				<string>CCBFile</string>
-				<key>children</key>
-				<array/>
-				<key>customClass</key>
-				<string></string>
-				<key>displayName</key>
-				<string>Platform</string>
-				<key>memberVarAssignmentName</key>
-				<string></string>
-				<key>memberVarAssignmentType</key>
-				<integer>1</integer>
-				<key>properties</key>
-				<array>
-					<dict>
-						<key>name</key>
-						<string>name</string>
-						<key>type</key>
-						<string>StringSimple</string>
-						<key>value</key>
-						<string></string>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>position</string>
-						<key>type</key>
-						<string>Position</string>
-						<key>value</key>
-						<array>
-							<real>0.4172535240650177</real>
-							<real>0.0</real>
-							<integer>0</integer>
-							<integer>2</integer>
-							<integer>2</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>scale</string>
-						<key>type</key>
-						<string>ScaleLock</string>
-						<key>value</key>
-						<array>
-							<real>0.31916207075119019</real>
-							<real>0.5</real>
-							<false/>
-							<integer>0</integer>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>rotation</string>
-						<key>type</key>
-						<string>Degrees</string>
-						<key>value</key>
-						<real>270</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>ccbFile</string>
-						<key>type</key>
-						<string>CCBFile</string>
-						<key>value</key>
-						<string>BlackPlatform.ccb</string>
-					</dict>
-				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -406,9 +268,9 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>106.55999755859375</real>
+							<real>0.33281248807907104</real>
 							<integer>2</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -460,7 +322,379 @@
 			</dict>
 			<dict>
 				<key>UUID</key>
+				<integer>2</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>262.3590087890625</real>
+							<real>53.25</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
 				<integer>4</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>322.3590087890625</real>
+							<real>53.25</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>6</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>382.3590087890625</real>
+							<real>53.25</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>8</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>353.3590087890625</real>
+							<real>113.25</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>10</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>293.3590087890625</real>
+							<real>113.25</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>12</integer>
+				<key>baseClass</key>
+				<string>CCBFile</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>CCBFile</string>
+				<key>memberVarAssignmentName</key>
+				<string></string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>324.3590087890625</real>
+							<real>173.25</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>ccbFile</string>
+						<key>type</key>
+						<string>CCBFile</string>
+						<key>value</key>
+						<string>BlackSingleSpike.ccb</string>
+					</dict>
+				</array>
+			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>14</integer>
 				<key>baseClass</key>
 				<string>CCBFile</string>
 				<key>children</key>
@@ -573,7 +807,7 @@
 				<key>type</key>
 				<integer>1</integer>
 				<key>value</key>
-				<string>100.000000</string>
+				<string>4.000000</string>
 			</dict>
 		</array>
 		<key>displayName</key>
@@ -644,8 +878,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -701,7 +933,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>0.0</real>
+			<real>2.0333333015441895</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

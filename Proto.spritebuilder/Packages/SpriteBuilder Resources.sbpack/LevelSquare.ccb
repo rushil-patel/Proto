@@ -51,7 +51,7 @@
 				<key>displayName</key>
 				<string>Level CCButton</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>levelButton</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -160,6 +160,14 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>zoomWhenHighlighted</string>
+						<key>type</key>
+						<string>Check</string>
+						<key>value</key>
+						<true/>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>backgroundSpriteFrame|Normal</string>
 						<key>type</key>
 						<string>SpriteFrame</string>
@@ -175,7 +183,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.69999998807907104</real>
+						<real>0.80000001192092896</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -184,11 +192,19 @@
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>0.8149304986000061</real>
-							<real>1</real>
-							<real>0.93964308500289917</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
 							<real>1</real>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>labelOpacity|Normal</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -198,7 +214,28 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonHighlighted.png</string>
+							<string>Assets/levelSquareBG.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundOpacity|Highlighted</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.80000001192092896</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundColor|Highlighted</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -223,6 +260,27 @@
 						<array>
 							<string></string>
 							<string>ccbResources/ccbButtonNormal.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundOpacity|Disabled</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.30000001192092896</real>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundColor|Disabled</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -419,7 +477,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.55555558204650879</real>
+							<real>0.50999999046325684</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -466,7 +524,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Futura-Medium</string>
+						<string>Fonts/Organo.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -475,7 +533,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>32</real>
+							<real>35</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -494,8 +552,8 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
+							<real>0.89999997615814209</real>
+							<real>0.89999997615814209</real>
 							<integer>2</integer>
 							<integer>2</integer>
 						</array>
@@ -514,7 +572,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>0</integer>
+						<integer>1</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -666,7 +724,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/miniLevelStar.png</string>
+							<string>Assets/silverStar.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -774,7 +832,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/miniLevelStar.png</string>
+							<string>Assets/silverStar.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -785,7 +843,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string></string>
+							<string>Assets/silverStar.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -882,7 +940,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>Assets/miniLevelStar.png</string>
+							<string>Assets/silverStar.png</string>
 						</array>
 					</dict>
 					<dict>

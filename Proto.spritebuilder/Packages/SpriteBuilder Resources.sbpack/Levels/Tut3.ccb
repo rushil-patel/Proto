@@ -254,7 +254,7 @@
 							<real>0.0</real>
 							<real>0.0</real>
 							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -415,11 +415,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>189.14399719238281</real>
+							<real>0.33300000429153442</real>
 							<real>0.0</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -481,8 +481,6 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -581,11 +579,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>378.28799438476562</real>
+							<real>0.66600000858306885</real>
 							<real>0.0</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -647,6 +645,8 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -745,7 +745,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>0.69999998807907104</real>
+									<real>1</real>
 									<key>type</key>
 									<integer>10</integer>
 									<key>value</key>
@@ -867,7 +867,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Organo.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -896,7 +896,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.052631735801696777</real>
+						<real>0.3500000536441803</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -908,7 +908,7 @@
 							<real>1</real>
 							<real>1</real>
 							<real>1</real>
-							<real>0.052631735801696777</real>
+							<real>0.3500000536441803</real>
 						</array>
 					</dict>
 					<dict>
@@ -1072,7 +1072,7 @@
 				<key>type</key>
 				<integer>1</integer>
 				<key>value</key>
-				<string>100.000000</string>
+				<string>4.000000</string>
 			</dict>
 		</array>
 		<key>displayName</key>
@@ -1190,7 +1190,7 @@
 				<integer>12</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
@@ -1198,7 +1198,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.2999999523162842</real>
+			<real>1.5666667222976685</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

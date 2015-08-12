@@ -8,11 +8,17 @@
 
 import Foundation
 import CoreMotion
+import Mixpanel
 
 class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     
+    //--------MIXPANEL-------//
+    let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+    //-----------------------//
     
+    //---User Activity State---//
     var userActivityState = UserState()
+    //--------- END --------//
 
     weak var levelNode: CCNode!
     weak var gameTimerLabel: CCLabelTTF!
@@ -36,8 +42,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         willSet(newValue) {
             
             if newValue == .Idle && heroState != .Idle {
-              
-                //do nothing
+                hero.idleAnim()
             } else if newValue == .Jump && heroState != .Jump {
                 hero.jumpAnim()
             } else if newValue == .Run && heroState != .Run {
@@ -96,38 +101,47 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         if level.currentLevel == "Levels/Tut1" {
             
             userInteractionEnabled = false
-            gameTimerLabel.visible = false
+            gameTimerLabel.visible = true
             colorToggle.scale = 0.001
             
         } else if level.currentLevel == "Levels/Tut2" {
             userInteractionEnabled = true
-            gameTimerLabel.visible = false
+            gameTimerLabel.visible = true
             colorToggle.scale = 0.001
             
         } else if level.currentLevel == "Levels/Tut3" {
             
             userInteractionEnabled = true
-            gameTimerLabel.visible = false
+            gameTimerLabel.visible = true
             colorToggle.scale = 0.001
             
         } else if level.currentLevel == "Levels/Tut4" {
             
             userInteractionEnabled = true
-            gameTimerLabel.visible = false
+            gameTimerLabel.visible = true
+            colorToggle.scale = 1.0
+            self.animationManager.runAnimationsForSequenceNamed("PulseColorToggleButton")
+            
+            userInteractionEnabled = true
+            gameTimerLabel.visible = true
             colorToggle.scale = 0.01
             
             
         } else if level.currentLevel == "Levels/Tut5" {
             
+            
             userInteractionEnabled = true
-            gameTimerLabel.visible = false
+            gameTimerLabel.visible = true
             colorToggle.scale = 1.0
             self.animationManager.runAnimationsForSequenceNamed("PulseColorToggleButton")
             
             
         } else if level.currentLevel == "Levels/Tut6" {
             
-        } else if level.currentLevel == "Levels/Tut7" {
+            userInteractionEnabled = true
+            gameTimerLabel.visible = true
+            colorToggle.scale = 1.0
+
             
         }
     }
@@ -148,7 +162,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             gameTimerLabel.string =  NSString(format: "%.2f", gameTimer) as String
             
             yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
-            yaw = clampf(yaw, Float(-1.0), Float(1.0))
+            yaw = clampf(yaw, Float(-0.7), Float(0.7))
             
             if yaw < Float(0.01) && yaw > Float(-0.01) {
                 yaw = 0.0
@@ -166,11 +180,11 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             if yaw > Float(0.01) {
                 
-                hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = 400 * abs(CGFloat(yaw))
                 
             } else if yaw < Float(0.01) {
                 
-                hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = -400 * abs(CGFloat(yaw))
                 
             } else {
                 
@@ -192,13 +206,14 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             
             //check for gameOver
-            let heroHeight = hero.position.y + hero.boundingBox().height / 2
+            //hero anchor point is at 0.5, 0
+            let heroHeight = hero.position.y * Constants.screenHeight + hero.boundingBox().height
             
             if heroHeight < 0 {
                 
                 //hero has fallen below screen GAME OVER
                 if gameState != .GameOver {
-                    //triggerGameOver()
+                    triggerGameOver()
                 }
             }
             
@@ -219,8 +234,9 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         
         if heroState == .Run || heroState == .Idle {
-            hero.physicsBody.velocity.y = 300
-            
+            if gameState == .Play {
+                hero.physicsBody.velocity.y = 300
+            }
             jumpScheduler = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("applyJump"), userInfo: nil, repeats: true)
             
             hero.jumpAnim()
@@ -239,7 +255,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     func applyJump() {
         
         if gameState == .Play {
-          
+            
             heroState = .Jump
             if jumpTime == 0.7 {
                
@@ -265,7 +281,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         gameState = .Pause
         hero.physicsBody.velocity = CGPointZero
-        
+        heroState = .Idle
         
         pauseButton.visible = false
         pauseMenu = CCBReader.load("PauseScene") as! PauseScene
@@ -282,9 +298,14 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     func triggerLevelWon() {
         
         gameState = .GameWon
-        hero.idleAnim()
+        heroState = .Idle
         hero.physicsBody.velocity = CGPointZero
         
+       
+        //-----MIXPANEL------//
+        let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
+        mixpanel.track("Level Complete", properties: ["Level Name" : levelName, "Level Completion Time" : gameTimerLabel.string])
+        //------------------//
         if let jumpScheduler = jumpScheduler {
             
             jumpScheduler.invalidate()
@@ -308,6 +329,11 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
                     
                     userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
                     levelCompleteScreen.bestTimeLabel.string = currentTime
+                    levelCompleteScreen.newPrefixBestTimeLabel.visible = true
+                    levelCompleteScreen.newPrefixBestTimeLabel.runAction(CCActionFadeIn(duration: 0.5))
+                    levelCompleteScreen.bestTimeLabel.fontColor = levelCompleteScreen.newPrefixBestTimeLabel.fontColor
+
+                
                     
                     //animate NEW BEST TIME SCORE
                     
@@ -323,6 +349,9 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
                 //set current time to best time
                 userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
                 levelCompleteScreen.bestTimeLabel.string = gameTimerLabel.string
+                levelCompleteScreen.newPrefixBestTimeLabel.visible = true
+                levelCompleteScreen.newPrefixBestTimeLabel.runAction(CCActionFadeIn(duration: 0.5))
+                levelCompleteScreen.bestTimeLabel.fontColor = levelCompleteScreen.newPrefixBestTimeLabel.fontColor
                 
             }
             
@@ -387,13 +416,13 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
         }
         
-        if level.currentLevel != "Levels/Tut7" {
+        //if level.currentLevel != "Levels/Tut7" {
             
-            levelCompleteScreen.currentTimeLabel.visible = false
-            levelCompleteScreen.currentTimeTextLabel.visible = false
-            levelCompleteScreen.bestTimeLabel.visible = false
-            levelCompleteScreen.bestTimeTextLabel.visible = false
-        }
+            levelCompleteScreen.currentTimeLabel.visible = true
+            levelCompleteScreen.currentTimeTextLabel.visible = true
+            levelCompleteScreen.bestTimeLabel.visible = true
+            levelCompleteScreen.bestTimeTextLabel.visible = true
+        //}
         
         //animate the stars based user time
         
@@ -403,8 +432,18 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func triggerGameOver() {
         
+        //-----MIXPANEL------//
+        let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
+        mixpanel.track("User Death", properties: ["LevelName" as String : levelName])
+        
+        //------------------//
+        println(levelName)
+
+        
         gameState = .GameOver
         pauseButton.removeFromParent()
+        
+        
         
         hero.physicsBody.velocity = CGPointZero
         hero.deadAnim()
@@ -444,8 +483,6 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         self.runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5), restartLevel]))
         
-        //var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
-        //self.addChild(gameOverScreen)
     }
     
     
@@ -506,7 +543,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         hero.toggle()
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, blackPlatform: Platform!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero: Hero!, blackPlatform: Platform!) -> ObjCBool {
         
         if hero.colorMode == "black" {
             
@@ -531,20 +568,16 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, normalPlatform: CCNode!) -> ObjCBool {
         
-        if heroState != .Idle {
+                
+            heroState = .Run
             
-            hero.runAnim()
-        }
-        
-        heroState = .Run
-        
-        //reset jump timer for next jump
-        jumpTime = 0.7
-        
+            //reset jump timer for next jump
+            jumpTime = 0.7
+
         return true
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, whitePlatform: Platform!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero: Hero!, whitePlatform: Platform!) -> ObjCBool {
         
         if hero.colorMode == "white" {
             
@@ -570,7 +603,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, blackSpike: CCSprite!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero : Hero!, blackSpike: CCSprite!) -> ObjCBool {
         
         if hero.colorMode == "black" {
             
@@ -590,7 +623,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, whiteSpike: CCSprite!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero : Hero!, whiteSpike: CCSprite!) -> ObjCBool {
         
         if hero.colorMode == "white" {
             
@@ -615,6 +648,8 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         if gameState != .GameWon {
             
             let triggerWin = CCActionCallFunc(target: self, selector: Selector("triggerLevelWon"))
+            pauseButton.visible = false
+
             let moveToPlatform = CCActionMoveTo(duration: 1.0, position: CGPointMake(level.endPortal.position.x, level.endPortal.position.y + level.endPortal.boundingBox().height))
             
             hero.runAction(CCActionSequence(array: [moveToPlatform, triggerWin]))

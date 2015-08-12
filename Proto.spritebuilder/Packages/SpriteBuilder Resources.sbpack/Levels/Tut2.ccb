@@ -481,8 +481,6 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -677,8 +675,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>tap
-</string>
+							<string>tap</string>
 							<false/>
 						</array>
 					</dict>
@@ -688,7 +685,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Organo.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -824,6 +821,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -880,7 +879,7 @@
 				<key>type</key>
 				<integer>1</integer>
 				<key>value</key>
-				<string>100.000000</string>
+				<string>4.000000</string>
 			</dict>
 		</array>
 		<key>displayName</key>

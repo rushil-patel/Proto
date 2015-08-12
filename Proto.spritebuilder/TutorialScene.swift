@@ -8,10 +8,10 @@
 
 import Foundation
 import CoreMotion
+import Mixpanel
 
 
 class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
-    
     
     weak var princess: CCNode!
     weak var hero: Hero!
@@ -21,6 +21,8 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     weak var pauseButton: CCButton!
     weak var whiteSpike: CCNode!
     weak var endPortal: CCNode!
+    weak var colorToggleNode: ColorToggle!
+    weak var deathFlashNode: CCNode!
     var pauseMenu: PauseScene!
     
     var gyroUserEnabled = false
@@ -70,6 +72,8 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     let instructions: [String] = ["Tilt the device to move", "Tap anywhere on the screen to jump", "You can only pass through colors that are the same as you", "Use the lower left button to switch between black and white", "Avoid triangles that are not your color", "To complete each level get to the portal as fast as you can", "Tutorial Complete! Have Fun"]
 
     func didLoadFromCCB() {
+        
+        colorToggleNode.visible = false
         
         tutorialPhysicsNode.collisionDelegate = self
 
@@ -124,7 +128,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
         if gyroUserEnabled {
             
             yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
-            yaw = clampf(yaw, Float(-1.0), Float(1.0))
+            yaw = clampf(yaw, Float(-0.70), Float(0.70))
             
             
             if yaw < Float(0.01) && yaw > Float(-0.01) {
@@ -140,11 +144,11 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             
             if yaw > Float(0.01) {
                 
-                hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = 650 * abs(CGFloat(yaw))
                 
             } else if yaw < Float(0.01) {
                 
-                hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = -650 * abs(CGFloat(yaw))
                 
             } else {
                 
@@ -153,7 +157,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             }
             
             //recognize that the user has learned the moving mechanic
-            if (yaw >= Float(0.6) || yaw <= Float(-0.6)) && progressState == 0 {
+            if (yaw >= Float(0.5) || yaw <= Float(-0.5)) && progressState == 0 {
             
                 progressState++
 
@@ -230,12 +234,13 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             switchUserEnabled = true
             
             if switchUserEnabled {
-                
+                colorToggleNode.visible = true
+                colorToggleNode.animationManager.runAnimationsForSequenceNamed("Pulse")
                 NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("colorToggle:"), name: "color_toggle", object: nil)
-                
             }
             
         case 4:
+            colorToggleNode.animationManager.runAnimationsForSequenceNamed("Default Timeline")
             
             break
 
@@ -263,12 +268,14 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     
     func colorToggle(notification: NSNotification) {
         
-        hero.toggle()
+        if switchUserEnabled == true {
+            hero.toggle()
         
-        if progressState == 3 {
+            if progressState == 3 {
             
-            progressState++
+                progressState++
             
+            }
         }
         
     }
@@ -296,6 +303,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     func resumeTutorial(notification: NSNotification) {
         
         //animation has call back that will remove pauseMenu Node from gameScene
+        gyroUserEnabled = true
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
         pauseButton.visible = true
         pauseMenu.removeFromParent()
@@ -319,6 +327,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     
     func triggerGamePause() {
         
+        gyroUserEnabled = false
         hero.physicsBody.velocity = CGPointZero
         
         pauseButton.visible = false
@@ -337,7 +346,9 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
      override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         
         if tapUserEnabled == false && progressState == 1{
-            
+
+            hero.physicsBody.velocity.y = 300
+    
             progressState++
             tapUserEnabled = true
         }
@@ -387,6 +398,9 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
             gyroUserEnabled = false
             hero.deadAnim()
             hero.physicsBody.type = CCPhysicsBodyType(rawValue: 2)!
+            deathFlashNode.runAction(CCActionSequence(array: [CCActionFadeIn(duration: 0.2), CCActionFadeOut(duration: 0.2)]))
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+
 
             let resetSequence = CCActionSequence(array: [CCActionDelay(duration: 1.5), CCActionCallBlock(block: {
                 self.heroState = .Idle;
@@ -396,6 +410,7 @@ class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
                 hero.positionInPoints = CGPointMake(120, 106.5);
                 self.gyroUserEnabled = true;
                 self.startSpikeCollisionDetection = true
+                
             })])
             
             hero.runAction(resetSequence)

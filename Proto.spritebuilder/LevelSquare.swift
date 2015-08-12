@@ -14,6 +14,7 @@ class LevelSquare: CCNode  {
     weak var starOne: CCSprite!
     weak var starTwo: CCSprite!
     weak var starThree: CCSprite!
+    weak var levelButton: CCButton!
     
     
     func launchLevel(button : CCButton) {
@@ -36,7 +37,7 @@ class LevelSquare: CCNode  {
             
             let gamePlayScene = CCScene()
             let gamePlay = CCBReader.load("Gameplay") as! GamePlayScene
-            let level = CCBReader.load("Levels/Level\(button.parent.name)") as! Level
+            let level = CCBReader.load("Levels/Level\(button.parent.name.toInt()! - 6)") as! Level
             
             gamePlay.level = level
             gamePlayScene.addChild(gamePlay)

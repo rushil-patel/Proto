@@ -10,13 +10,13 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>19</integer>
+	<integer>20</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
 	<integer>0</integer>
 	<key>currentSequenceId</key>
-	<integer>1</integer>
+	<integer>2</integer>
 	<key>docDimensionsType</key>
 	<integer>1</integer>
 	<key>fileType</key>
@@ -153,8 +153,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -274,7 +272,9 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>sfsfsfwffwefwfewefewfwfewfwefwfew</string>
+							<string>fill fill fill fill fill fill fill fill
+
+</string>
 							<false/>
 						</array>
 					</dict>
@@ -284,7 +284,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Helvetica</string>
+						<string>Fonts/Organo.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -433,6 +433,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1284,7 +1286,7 @@
 				<key>displayName</key>
 				<string>ColorToggle</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>colorToggleNode</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -1887,6 +1889,105 @@
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
+			<dict>
+				<key>UUID</key>
+				<integer>19</integer>
+				<key>baseClass</key>
+				<string>CCNodeColor</string>
+				<key>children</key>
+				<array/>
+				<key>customClass</key>
+				<string></string>
+				<key>displayName</key>
+				<string>DeathFlashNode</string>
+				<key>memberVarAssignmentName</key>
+				<string>deathFlashNode</string>
+				<key>memberVarAssignmentType</key>
+				<integer>1</integer>
+				<key>properties</key>
+				<array>
+					<dict>
+						<key>name</key>
+						<string>name</string>
+						<key>type</key>
+						<string>StringSimple</string>
+						<key>value</key>
+						<string></string>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>position</string>
+						<key>type</key>
+						<string>Position</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<integer>0</integer>
+							<integer>0</integer>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<integer>2</integer>
+							<integer>2</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>anchorPoint</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>scale</string>
+						<key>type</key>
+						<string>ScaleLock</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<false/>
+							<integer>0</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<real>1</real>
+							<real>0.0</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>opacity</string>
+						<key>type</key>
+						<string>Float</string>
+						<key>value</key>
+						<real>0.0</real>
+					</dict>
+				</array>
+			</dict>
 		</array>
 		<key>customClass</key>
 		<string>TutorialScene</string>
@@ -2056,6 +2157,42 @@
 			<real>128</real>
 			<key>sequenceId</key>
 			<integer>1</integer>
+			<key>soundChannel</key>
+			<dict>
+				<key>isExpanded</key>
+				<false/>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>11</integer>
+			</dict>
+		</dict>
+		<dict>
+			<key>autoPlay</key>
+			<false/>
+			<key>callbackChannel</key>
+			<dict>
+				<key>keyframes</key>
+				<array/>
+				<key>type</key>
+				<integer>12</integer>
+			</dict>
+			<key>chainedSequenceId</key>
+			<integer>-1</integer>
+			<key>length</key>
+			<real>10</real>
+			<key>name</key>
+			<string>Untitled Timeline</string>
+			<key>offset</key>
+			<real>0.0</real>
+			<key>position</key>
+			<real>0.0</real>
+			<key>resolution</key>
+			<real>30</real>
+			<key>scale</key>
+			<real>128</real>
+			<key>sequenceId</key>
+			<integer>2</integer>
 			<key>soundChannel</key>
 			<dict>
 				<key>isExpanded</key>

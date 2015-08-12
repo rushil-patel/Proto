@@ -9,6 +9,7 @@
 import Foundation
 import CoreMotion
 import AudioToolbox
+import Mixpanel
 
 enum GameState {
     case Play, Pause, GameOver, Starting, GameWon
@@ -33,9 +34,13 @@ struct Constants {
 class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
-    //***User Activity State***//
+    //--------MIXPANEL-------//
+    let mixpanel: Mixpanel = Mixpanel.sharedInstance()
+    //-----------------------//
+    
+    //---User Activity State---//
     var userActivityState = UserState()
-    //********** END **********//
+    //--------- END --------//
     
     //code connections
     var hero: Hero = CCBReader.load("Hero") as! Hero
@@ -71,6 +76,8 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
+    var loadingNextLevel = false
+    
     //MARK: Game Dependent Variabes
     var jumpTime: Float = 0.7
 
@@ -81,6 +88,9 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
 
     
     func didLoadFromCCB() {
+        
+        gamePhysicsNode.space.collisionBias = 0
+        CCDirector.sharedDirector().fixedUpdateInterval = 1.0/180.0
         
         //lock orientation to landscape left
         let value = UIInterfaceOrientation.LandscapeLeft.rawValue
@@ -95,7 +105,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         //enable user inteaction
         userInteractionEnabled = true
         
-        //gamePhysicsNode.debugDraw = true
+         gamePhysicsNode.debugDraw = true
         
         //set physics collision delegate to self
         gamePhysicsNode.collisionDelegate = self
@@ -143,6 +153,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         hero.position = CGPointMake(CGFloat(level.startPosX), CGFloat(level.startPosY))
 
         cameraTargetNode.position.x =  Constants.screenWidth/2
+        cameraTargetNode.position.y = Constants.screenHeight/2
         
         actionFollow = CCActionFollow(target: cameraTargetNode , worldBoundary: level.boundingBox())
         gamePhysicsNode.runAction(actionFollow)
@@ -158,7 +169,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     override func fixedUpdate(delta: CCTime) {
         
         cameraTargetNode.position.x = Constants.screenWidth/2 - CGFloat(level.startPosX) + hero.position.x
-
+        cameraTargetNode.position.y = Constants.screenHeight/2 - CGFloat(level.startPosY) + hero.position.y
         
     }
     
@@ -171,7 +182,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 gameTimerLabel.string =  NSString(format: "%.2f", gameTimer) as String
                 
                 yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
-                yaw = clampf(yaw, Float(-1.0), Float(1.0))
+                yaw = clampf(yaw, Float(-0.70), Float(0.70))
         
                 if yaw < Float(0.01) && yaw > Float(-0.01) {
                     yaw = 0.0
@@ -189,11 +200,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 
                 if yaw > Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = 400 * abs(CGFloat(yaw))
 
                 } else if yaw < Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = -400 * abs(CGFloat(yaw))
 
                 } else {
                    
@@ -203,6 +214,8 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
                 let boundRight = level.position.x + level.boundingBox().width
                 let boundLeft = level.position.x
+                
+                let boundTop = level.position.y + level.boundingBox().height
 
                 if hero.position.x + hero.boundingBox().width/2 >= boundRight && yaw > 0{
         
@@ -211,6 +224,10 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 } else if hero.position.x - hero.boundingBox().width/2 <= boundLeft && yaw < 0{
                     
                     hero.physicsBody.velocity.x = 0
+                }
+                
+                if hero.position.y + hero.boundingBox().height/2 >= boundTop && heroState == .Jump {
+                    hero.physicsBody.velocity.y = 0
                 }
         
                /* if hero.physicsBody.velocity.x < 150 {
@@ -261,9 +278,9 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
         
             if heroState == .Run || heroState == .Idle {
-               
-                hero.physicsBody.velocity.y = 300
-
+                if gameState == .Play {
+                    hero.physicsBody.velocity.y = 300
+                }
                 jumpScheduler = NSTimer.scheduledTimerWithTimeInterval( 0.01, target: self, selector: Selector("applyJump"), userInfo: nil, repeats: true)
 
                 hero.jumpAnim()
@@ -307,10 +324,19 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func triggerLevelWon() {
         
+        //-----MIXPANEL------//
+        let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
+        let mixpanelDate = "\(round((gameTimerLabel.string as NSString).floatValue))"
+        mixpanel.track("Level Complete", properties: ["Level Name" : levelName, "Level Completion Time": mixpanelDate])
+        //------------------//
+
         gameState = .GameWon
         gamePhysicsNode.stopAction(actionFollow)
         hero.idleAnim()
         hero.physicsBody.velocity = CGPointZero
+        hero.physicsBody.type = CCPhysicsBodyType(rawValue: 2)!
+        
+        pauseButton.removeFromParent()
         
         if let jumpScheduler = jumpScheduler {
            
@@ -335,8 +361,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                     
                     userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
                     levelCompleteScreen.bestTimeLabel.string = currentTime
-                    
-                    //animate NEW BEST TIME SCORE
+                    userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
+                    levelCompleteScreen.bestTimeLabel.string = gameTimerLabel.string
+                    levelCompleteScreen.newPrefixBestTimeLabel.visible = true
+                    levelCompleteScreen.newPrefixBestTimeLabel.runAction(CCActionFadeIn(duration: 0.5))
+                    levelCompleteScreen.bestTimeLabel.fontColor = levelCompleteScreen.newPrefixBestTimeLabel.fontColor
                     
                 } else {
                     //set bestTimelabel to best time
@@ -350,6 +379,9 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 //set current time to best time
                 userActivityState.updateBestTimes(level.currentLevel, timeValue: currentTime)
                 levelCompleteScreen.bestTimeLabel.string = gameTimerLabel.string
+                levelCompleteScreen.newPrefixBestTimeLabel.visible = true
+                levelCompleteScreen.newPrefixBestTimeLabel.runAction(CCActionFadeIn(duration: 0.5))
+                levelCompleteScreen.bestTimeLabel.fontColor = levelCompleteScreen.newPrefixBestTimeLabel.fontColor
                 
             }
             
@@ -425,6 +457,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     func triggerGameOver() {
+       
         
         gameState = .GameOver
         pauseButton.removeFromParent()
@@ -439,8 +472,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
         
         AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-        hero.physicsBody.velocity.x = 0
-        hero.physicsBody.velocity.y = 0
+    
         
         
         if let jumpScheduler = jumpScheduler {
@@ -455,14 +487,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
         deathFlashNode.runAction(CCActionSequence(array: [CCActionFadeIn(duration: 0.2), CCActionFadeOut(duration: 0.2)]))
 
-        /*
-        let spawnGameOverMenuAction = CCActionCallBlock.actionWithBlock({
-            var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
-            self.addChild(gameOverScreen)
-
-        }) as! CCActionCallBlock
-        */
-        
         let restartLevel = CCActionCallBlock {
             
             var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
@@ -474,9 +498,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
         
         self.runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5), restartLevel]))
-
-        //var gameOverScreen = CCBReader.load("GameOver", owner: self) as! GameOverScene
-        //self.addChild(gameOverScreen)
     }
     
     func retryLevel(notification: NSNotification) {
@@ -492,14 +513,16 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func loadNextLevel(notification: NSNotification) {
         
-        var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
-        gameScene.level = CCBReader.load(level.nextLevel) as! Level
+        if loadingNextLevel == false {
+            var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
+            gameScene.level = CCBReader.load(level.nextLevel) as! Level
         
-        var scene = CCScene()
-        scene.addChild(gameScene)
+            var scene = CCScene()
+            scene.addChild(gameScene)
         
-        CCDirector.sharedDirector().replaceScene(scene)
-
+            CCDirector.sharedDirector().replaceScene(scene)
+            loadingNextLevel = true
+        }
     }
     
 
@@ -559,7 +582,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     //MARK: Collision Handling
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, blackPlatform: Platform!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero: Hero!, blackPlatform: Platform!) -> ObjCBool {
         
         if hero.colorMode == "black" {
             
@@ -581,6 +604,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             return true
         }
     }
+    
     
     func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, normalPlatform: CCNode!) -> ObjCBool {
         
@@ -597,7 +621,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         return true
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, whitePlatform: Platform!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero: Hero!, whitePlatform: Platform!) -> ObjCBool {
         
         if hero.colorMode == "white" {
             
@@ -623,7 +647,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, blackSpike: CCSprite!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero : Hero!, blackSpike: CCSprite!) -> ObjCBool {
         
         if hero.colorMode == "black" {
             
@@ -634,6 +658,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             if gameState != .GameOver {
                 
+        
                 triggerGameOver()
                 
             }
@@ -643,7 +668,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero : Hero!, whiteSpike: CCSprite!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero : Hero!, whiteSpike: CCSprite!) -> ObjCBool {
         
         if hero.colorMode == "white" {
             
@@ -661,12 +686,13 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         }
     }
     
-    func ccPhysicsCollisionBegin(pair: CCPhysicsCollisionPair!, hero: Hero!, endPortal: CCSprite!) -> ObjCBool {
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, hero: Hero!, endPortal: CCSprite!) -> ObjCBool {
     
         hero.physicsBody.velocity = CGPointZero
         
         if gameState != .GameWon {
             
+            pauseButton.visible = false
             let triggerWin = CCActionCallFunc(target: self, selector: Selector("triggerLevelWon"))
             let moveToPlatform = CCActionMoveTo(duration: 1.0, position: CGPointMake(level.endPortal.position.x, level.endPortal.position.y + level.endPortal.boundingBox().height))
             
@@ -680,7 +706,40 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
     }
     
-
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, whiteSpike spike1: CCSprite!, whiteSpike spike2: CCSprite!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, blackSpike spike1: CCSprite!, blackSpike spike2: CCSprite!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, whiteSpike: CCSprite!, whitePlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, whiteSpike: CCSprite!, blackPlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, blackSpike: CCSprite!, whitePlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, blackSpike: CCSprite!, blackPlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, blackSpike: CCSprite!, normalPlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, whiteSpike: CCSprite!, normalPlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    
+    
 }
 
 

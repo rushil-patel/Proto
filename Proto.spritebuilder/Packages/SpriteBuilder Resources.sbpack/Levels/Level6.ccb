@@ -10,7 +10,7 @@
 		<false/>
 	</dict>
 	<key>UUID</key>
-	<integer>19</integer>
+	<integer>20</integer>
 	<key>centeredOrigin</key>
 	<false/>
 	<key>currentResolution</key>
@@ -41,15 +41,15 @@
 		<array>
 			<dict>
 				<key>UUID</key>
-				<integer>18</integer>
+				<integer>19</integer>
 				<key>baseClass</key>
-				<string>CCSprite</string>
+				<string>CCNodeGradient</string>
 				<key>children</key>
 				<array/>
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>lvl1</string>
+				<string>CCNodeGradient</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -80,6 +80,19 @@
 					</dict>
 					<dict>
 						<key>name</key>
+						<string>contentSize</string>
+						<key>type</key>
+						<string>Size</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>1</real>
+							<integer>2</integer>
+							<integer>2</integer>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
 						<string>anchorPoint</string>
 						<key>type</key>
 						<string>Point</string>
@@ -96,54 +109,48 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>4.0008902549743652</real>
-							<real>1.0070891380310059</real>
+							<real>1</real>
+							<real>1</real>
 							<false/>
 							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>spriteFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string>Assets/lvl1.png</string>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>normalMapSpriteFrame</string>
-						<key>type</key>
-						<string>SpriteFrame</string>
-						<key>value</key>
-						<array>
-							<string></string>
-							<string></string>
-						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
+						<string>startColor</string>
 						<key>type</key>
 						<string>Color3</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
+							<real>0.16862745583057404</real>
+							<real>0.78039216995239258</real>
+							<real>0.87058824300765991</real>
 							<real>1</real>
 						</array>
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>effects</string>
+						<string>endColor</string>
 						<key>type</key>
-						<string>EffectControl</string>
+						<string>Color3</string>
 						<key>value</key>
-						<array/>
+						<array>
+							<real>0.12941177189350128</real>
+							<real>0.49803921580314636</real>
+							<real>0.80000001192092896</real>
+							<real>1</real>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>vector</string>
+						<key>type</key>
+						<string>Point</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>-1</real>
+						</array>
 					</dict>
 				</array>
 			</dict>
@@ -752,24 +759,24 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>8055.5654296875</real>
-							<real>105.90724182128906</real>
+							<real>7398.6796875</real>
+							<real>106.5</real>
 						</array>
 						<array>
-							<real>8062.24755859375</real>
-							<real>6.2966628074645996</real>
+							<real>7398.6796875</real>
+							<real>-1.359375</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>8062.24755859375</real>
-								<real>6.2966628074645996</real>
+								<real>7398.6796875</real>
+								<real>-1.359375</real>
 							</array>
 							<array>
-								<real>8055.5654296875</real>
-								<real>105.90724182128906</real>
+								<real>7398.6796875</real>
+								<real>106.5</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -837,7 +844,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.11345489323139191</real>
+							<real>0.09992922842502594</real>
 							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
@@ -970,7 +977,7 @@
 						<key>value</key>
 						<array>
 							<real>1553.0001220703125</real>
-							<real>83.25</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1032,7 +1039,7 @@
 						<key>value</key>
 						<array>
 							<real>1613.0001220703125</real>
-							<real>83.25</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -1074,7 +1081,7 @@
 				<key>type</key>
 				<integer>3</integer>
 				<key>value</key>
-				<string>"End"</string>
+				<string>Levels/Level7</string>
 			</dict>
 			<dict>
 				<key>name</key>
@@ -1114,7 +1121,7 @@
 				<key>type</key>
 				<integer>1</integer>
 				<key>value</key>
-				<string>4.500000</string>
+				<string>7.000000</string>
 			</dict>
 		</array>
 		<key>displayName</key>
@@ -1154,7 +1161,7 @@
 				<string>Size</string>
 				<key>value</key>
 				<array>
-					<real>2272</real>
+					<real>2100</real>
 					<real>320</real>
 					<integer>0</integer>
 					<integer>0</integer>

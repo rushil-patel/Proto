@@ -946,8 +946,6 @@
 						<real>1</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1092,7 +1090,7 @@
 						<key>type</key>
 						<string>FontTTF</string>
 						<key>value</key>
-						<string>Futura-CondensedMedium</string>
+						<string>Fonts/Organo.ttf</string>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1228,6 +1226,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
