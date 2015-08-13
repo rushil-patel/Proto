@@ -153,8 +153,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -352,11 +350,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>262.3590087890625</real>
-							<real>53.25</real>
+							<real>0.46189966797828674</real>
+							<real>0.16640624403953552</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -414,11 +412,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>322.3590087890625</real>
-							<real>53.25</real>
+							<real>0.56753349304199219</real>
+							<real>0.16640624403953552</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -476,11 +474,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>382.3590087890625</real>
-							<real>53.25</real>
+							<real>0.67316728830337524</real>
+							<real>0.16640624403953552</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -538,11 +536,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>353.3590087890625</real>
-							<real>113.25</real>
+							<real>0.62211090326309204</real>
+							<real>0.35390624403953552</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -600,11 +598,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>293.3590087890625</real>
-							<real>113.25</real>
+							<real>0.51647710800170898</real>
+							<real>0.35390624403953552</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -662,11 +660,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>324.3590087890625</real>
-							<real>173.25</real>
+							<real>0.57105457782745361</real>
+							<real>0.54140627384185791</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -691,6 +689,8 @@
 						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

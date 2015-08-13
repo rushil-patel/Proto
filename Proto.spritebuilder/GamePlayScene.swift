@@ -105,7 +105,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         //enable user inteaction
         userInteractionEnabled = true
         
-        gamePhysicsNode.debugDraw = true
+       // gamePhysicsNode.debugDraw = true
         
         //set physics collision delegate to self
         gamePhysicsNode.collisionDelegate = self
