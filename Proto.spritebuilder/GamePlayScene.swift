@@ -105,7 +105,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         //enable user inteaction
         userInteractionEnabled = true
         
-         gamePhysicsNode.debugDraw = true
+        gamePhysicsNode.debugDraw = true
         
         //set physics collision delegate to self
         gamePhysicsNode.collisionDelegate = self
@@ -182,7 +182,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 gameTimerLabel.string =  NSString(format: "%.2f", gameTimer) as String
                 
                 yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
-                yaw = clampf(yaw, Float(-0.70), Float(0.70))
+                yaw = clampf(yaw, Float(-0.80), Float(0.80))
         
                 if yaw < Float(0.01) && yaw > Float(-0.01) {
                     yaw = 0.0
@@ -200,11 +200,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 
                 if yaw > Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = 400 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
 
                 } else if yaw < Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = -400 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
 
                 } else {
                    
@@ -215,8 +215,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 let boundRight = level.position.x + level.boundingBox().width
                 let boundLeft = level.position.x
                 
-                let boundTop = level.position.y + level.boundingBox().height
-
                 if hero.position.x + hero.boundingBox().width/2 >= boundRight && yaw > 0{
         
                     hero.physicsBody.velocity.x = 0
@@ -225,28 +223,8 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                     
                     hero.physicsBody.velocity.x = 0
                 }
-                
-                if hero.position.y + hero.boundingBox().height/2 >= boundTop && heroState == .Jump {
-                    hero.physicsBody.velocity.y = 0
-                }
         
-               /* if hero.physicsBody.velocity.x < 150 {
-                   
-                    hero.physicsBody.velocity.x += 10
-                    hero.physicsBody.velocity.x *= 2
-                }
-               
-                */
-                        
-               /* if heroState == .Idle {
-                    
-                    //accelerate Game speed from 0 -> 100 (for beginning game and slow downs
-                    heroState = .Run
-                    
-                }
-                */
-                
-                //check for gameOver
+                          //check for gameOver
                 let heroHeight = hero.position.y + hero.boundingBox().height / 2
                 
                 if heroHeight < 0 {
@@ -559,20 +537,28 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         if gameState == .Play {
             heroState = .Jump
-            if jumpTime == 0.7 {
-                hero.physicsBody.velocity.y = CGFloat(300)
-                jumpTime -= 0.06
-
-            }
-            else if jumpTime > 0.0 {
-                
-                hero.physicsBody.velocity.y = CGFloat(jumpTime * 10 * 50)
-                jumpTime -= 0.015
-                
-            }  else {
-                
+            
+            let boundTop = level.position.y + level.boundingBox().height
+            
+            if hero.position.y + hero.boundingBox().height >= boundTop && heroState == .Jump {
                 jumpScheduler!.invalidate()
+                jumpTime = 0
+            } else {
+                if jumpTime == 0.7 {
+                    hero.physicsBody.velocity.y = CGFloat(300)
+                    jumpTime -= 0.06
+
+                }
+                else if jumpTime > 0.0 {
                 
+                    hero.physicsBody.velocity.y = CGFloat(jumpTime * 10 * 50)
+                    jumpTime -= 0.015
+                
+                }  else {
+                
+                    jumpScheduler!.invalidate()
+                
+                }
             }
         }
         
@@ -727,6 +713,10 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, blackSpike: CCSprite!, blackPlatform: CCNode!) -> ObjCBool {
+        return false
+    }
+    
+    func ccPhysicsCollisionPreSolve(pair: CCPhysicsCollisionPair!, blackSpike: CCSprite!, whiteSpike: CCNode!) -> ObjCBool {
         return false
     }
     

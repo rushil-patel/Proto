@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B77F1B2D17B978D7009739AE"
-               BuildableName = "SwitchRun.app"
-               BlueprintName = "SwitchRun iOS"
-               ReferencedContainer = "container:SwitchRun.xcodeproj">
+               BuildableName = "SwitchRunner.app"
+               BlueprintName = "SwitchRunner iOS"
+               ReferencedContainer = "container:SwitchRunnere.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B77F1B2D17B978D7009739AE"
-            BuildableName = "SwitchRun.app"
-            BlueprintName = "SwitchRun iOS"
-            ReferencedContainer = "container:SwitchRun.xcodeproj">
+            BuildableName = "SwitchRunner.app"
+            BlueprintName = "SwitchRunner iOS"
+            ReferencedContainer = "container:SwitchRunnere.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B77F1B2D17B978D7009739AE"
-            BuildableName = "SwitchRun.app"
-            BlueprintName = "SwitchRun iOS"
-            ReferencedContainer = "container:SwitchRun.xcodeproj">
+            BuildableName = "SwitchRunner.app"
+            BlueprintName = "SwitchRunner iOS"
+            ReferencedContainer = "container:SwitchRunnere.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B77F1B2D17B978D7009739AE"
-            BuildableName = "SwitchRun.app"
-            BlueprintName = "SwitchRun iOS"
-            ReferencedContainer = "container:SwitchRun.xcodeproj">
+            BuildableName = "SwitchRunner.app"
+            BlueprintName = "SwitchRunner iOS"
+            ReferencedContainer = "container:SwitchRunnere.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

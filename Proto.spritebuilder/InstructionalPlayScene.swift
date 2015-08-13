@@ -162,7 +162,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             gameTimerLabel.string =  NSString(format: "%.2f", gameTimer) as String
             
             yaw = Float(motionManager.accelerometerData.acceleration.y) * Float(2.0)
-            yaw = clampf(yaw, Float(-0.7), Float(0.7))
+            yaw = clampf(yaw, Float(-0.8), Float(0.8))
             
             if yaw < Float(0.01) && yaw > Float(-0.01) {
                 yaw = 0.0
@@ -180,11 +180,11 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             if yaw > Float(0.01) {
                 
-                hero.physicsBody.velocity.x = 400 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
                 
             } else if yaw < Float(0.01) {
                 
-                hero.physicsBody.velocity.x = -400 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
                 
             } else {
                 
