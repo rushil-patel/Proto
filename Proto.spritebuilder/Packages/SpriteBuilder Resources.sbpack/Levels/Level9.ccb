@@ -4456,9 +4456,9 @@
 				<key>optimized</key>
 				<false/>
 				<key>type</key>
-				<integer>3</integer>
+				<integer>1</integer>
 				<key>value</key>
-				<string>0</string>
+				<string>5.000000</string>
 			</dict>
 		</array>
 		<key>displayName</key>

@@ -594,12 +594,8 @@
 					<real>10.992859840393066</real>
 				</array>
 				<array>
-					<real>53.65234375</real>
-					<real>38.64453125</real>
-				</array>
-				<array>
-					<real>27.296895980834961</real>
-					<real>72.377296447753906</real>
+					<real>22.831504821777344</real>
+					<real>73.691169738769531</real>
 				</array>
 				<array>
 					<real>26.510671615600586</real>
@@ -622,12 +618,8 @@
 					<real>109.26579284667969</real>
 				</array>
 				<array>
-					<real>149.8760986328125</real>
-					<real>77.141746520996094</real>
-				</array>
-				<array>
-					<real>125.78044891357422</real>
-					<real>39.138679504394531</real>
+					<real>153.53904724121094</real>
+					<real>77.056892395019531</real>
 				</array>
 				<array>
 					<real>125.60384368896484</real>
@@ -638,30 +630,12 @@
 			<array>
 				<array>
 					<array>
-						<real>53.65234375</real>
-						<real>38.64453125</real>
-					</array>
-					<array>
-						<real>52.908740997314453</real>
-						<real>10.992859840393066</real>
-					</array>
-					<array>
 						<real>125.60384368896484</real>
 						<real>11.635184288024902</real>
 					</array>
 					<array>
-						<real>125.78044891357422</real>
-						<real>39.138679504394531</real>
-					</array>
-				</array>
-				<array>
-					<array>
-						<real>125.78044891357422</real>
-						<real>39.138679504394531</real>
-					</array>
-					<array>
-						<real>149.8760986328125</real>
-						<real>77.141746520996094</real>
+						<real>153.53904724121094</real>
+						<real>77.056892395019531</real>
 					</array>
 					<array>
 						<real>151.55058288574219</real>
@@ -684,12 +658,12 @@
 						<real>111.46486663818359</real>
 					</array>
 					<array>
-						<real>27.296895980834961</real>
-						<real>72.377296447753906</real>
+						<real>22.831504821777344</real>
+						<real>73.691169738769531</real>
 					</array>
 					<array>
-						<real>53.65234375</real>
-						<real>38.64453125</real>
+						<real>52.908740997314453</real>
+						<real>10.992859840393066</real>
 					</array>
 				</array>
 			</array>
@@ -791,6 +765,8 @@
 				<array/>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 		<key>seqExpanded</key>
 		<true/>
 	</dict>

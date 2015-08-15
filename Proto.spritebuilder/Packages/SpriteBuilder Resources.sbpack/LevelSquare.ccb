@@ -179,14 +179,6 @@
 					</dict>
 					<dict>
 						<key>name</key>
-						<string>backgroundOpacity|Normal</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.80000001192092896</real>
-					</dict>
-					<dict>
-						<key>name</key>
 						<string>backgroundColor|Normal</string>
 						<key>type</key>
 						<string>Color3</string>
@@ -197,14 +189,6 @@
 							<real>0.0</real>
 							<real>1</real>
 						</array>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>labelOpacity|Normal</string>
-						<key>type</key>
-						<string>Float</string>
-						<key>value</key>
-						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -259,7 +243,7 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Assets/levelSquareBGDisabledFinal.png</string>
 						</array>
 					</dict>
 					<dict>
@@ -268,20 +252,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.30000001192092896</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>backgroundColor|Disabled</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>0.0</real>
-							<real>1</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -299,7 +270,20 @@
 						<key>value</key>
 						<array>
 							<string></string>
-							<string>ccbResources/ccbButtonNormal.png</string>
+							<string>Assets/levelSquareBG.png</string>
+						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>backgroundColor|Selected</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>0.0</real>
+							<real>1</real>
 						</array>
 					</dict>
 					<dict>
@@ -443,6 +427,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -477,7 +463,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>0.50999999046325684</real>
+							<real>0.54999995231628418</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -572,7 +558,7 @@
 						<key>type</key>
 						<string>IntegerLabeled</string>
 						<key>value</key>
-						<integer>1</integer>
+						<integer>2</integer>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -650,8 +636,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

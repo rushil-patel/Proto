@@ -645,8 +645,6 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -734,36 +732,6 @@
 									<key>type</key>
 									<integer>10</integer>
 									<key>value</key>
-									<real>1</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>opacity</string>
-									<key>time</key>
-									<real>1</real>
-									<key>type</key>
-									<integer>10</integer>
-									<key>value</key>
-									<real>1</real>
-								</dict>
-								<dict>
-									<key>easing</key>
-									<dict>
-										<key>type</key>
-										<integer>1</integer>
-									</dict>
-									<key>name</key>
-									<string>opacity</string>
-									<key>time</key>
-									<real>1.3333333730697632</real>
-									<key>type</key>
-									<integer>10</integer>
-									<key>value</key>
 									<real>0.0</real>
 								</dict>
 								<dict>
@@ -775,7 +743,7 @@
 									<key>name</key>
 									<string>opacity</string>
 									<key>time</key>
-									<real>2</real>
+									<real>0.56666666269302368</real>
 									<key>type</key>
 									<integer>10</integer>
 									<key>value</key>
@@ -818,8 +786,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.5</real>
-							<real>0.69999998807907104</real>
+							<real>0.49950000643730164</real>
+							<real>0.84099996089935303</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -856,7 +824,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>tap and hold
+							<string>I can jump really high
 </string>
 							<false/>
 						</array>
@@ -876,7 +844,7 @@
 						<string>FloatScale</string>
 						<key>value</key>
 						<array>
-							<real>48</real>
+							<real>24</real>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -896,20 +864,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.3500000536441803</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>0.3500000536441803</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1016,6 +971,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1190,7 +1147,7 @@
 				<integer>12</integer>
 			</dict>
 			<key>chainedSequenceId</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>length</key>
 			<real>2</real>
 			<key>name</key>
@@ -1198,7 +1155,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>1.5666667222976685</real>
+			<real>1.1000000238418579</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

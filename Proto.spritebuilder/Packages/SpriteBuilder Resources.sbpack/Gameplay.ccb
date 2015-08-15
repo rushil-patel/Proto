@@ -400,7 +400,7 @@
 				<key>displayName</key>
 				<string>ColorToggle</string>
 				<key>memberVarAssignmentName</key>
-				<string></string>
+				<string>colorToggle</string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
 				<key>properties</key>
@@ -449,6 +449,8 @@
 						<string>SwitchButton.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -482,11 +484,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>276</real>
-							<real>274.11465454101562</real>
+							<real>0.5</real>
+							<real>0.70035827159881592</real>
 							<integer>0</integer>
-							<integer>0</integer>
-							<integer>0</integer>
+							<integer>2</integer>
+							<integer>2</integer>
 						</array>
 					</dict>
 					<dict>
@@ -520,7 +522,8 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string></string>
+							<string>
+</string>
 							<false/>
 						</array>
 					</dict>
@@ -656,8 +659,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

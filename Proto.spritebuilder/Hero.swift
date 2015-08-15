@@ -17,9 +17,7 @@ class Hero: CCSprite {
     //Custom Properties
     var colorMode: String = ""
     
-    //Hero constants
-    let lift: CGFloat = 5000.0
-    
+    //Hero constants    
     func didLoadFromCCB() {
         
         self.scale = 0.3

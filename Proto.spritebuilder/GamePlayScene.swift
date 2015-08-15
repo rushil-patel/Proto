@@ -49,6 +49,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     weak var pauseButton: CCButton!
     weak var gameTimerLabel: CCLabelTTF!
     weak var deathFlashNode: CCNode!
+    weak var colorToggle: ColorToggle!
     var pauseMenu: PauseScene!
     
     //gameplay physics node connection
@@ -200,11 +201,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 
                 if yaw > Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = 475 * abs(CGFloat(yaw))
 
                 } else if yaw < Float(0.01) {
                     
-                    hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
+                    hero.physicsBody.velocity.x = -475 * abs(CGFloat(yaw))
 
                 } else {
                    
@@ -284,11 +285,14 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func triggerGamePause() {
         
+        gamePhysicsNode.paused = true
+        
         gameState = .Pause
         hero.physicsBody.velocity = CGPointZero
         
-        
         pauseButton.visible = false
+        colorToggle.visible = false
+
         pauseMenu = CCBReader.load("PauseScene") as! PauseScene
         pauseMenu.cascadeOpacityEnabled = true
         self.addChild(pauseMenu)
@@ -308,12 +312,18 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         mixpanel.track("Level Complete", properties: ["Level Name" : levelName, "Level Completion Time": mixpanelDate])
         //------------------//
 
+        
+        gamePhysicsNode.paused = true
+        
         gameState = .GameWon
         gamePhysicsNode.stopAction(actionFollow)
         hero.idleAnim()
         hero.physicsBody.velocity = CGPointZero
         hero.physicsBody.type = CCPhysicsBodyType(rawValue: 2)!
         
+        gameTimerLabel.visible = false
+        colorToggle.visible = false
+
         pauseButton.removeFromParent()
         
         if let jumpScheduler = jumpScheduler {
@@ -487,19 +497,32 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         scene.addChild(gameScene)
         
         CCDirector.sharedDirector().replaceScene(scene, withTransition: CCTransition(moveInWithDirection: CCTransitionDirection(rawValue: 2)!, duration: 1.0))
+    
     }
     
     func loadNextLevel(notification: NSNotification) {
         
+        gameState = .Pause
         if loadingNextLevel == false {
-            var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
-            gameScene.level = CCBReader.load(level.nextLevel) as! Level
+            
+            if level.nextLevel == "End" {
+                
+                
+                let epilogue = CCBReader.load("Epilogue")
+                self.addChild(epilogue)
+                
+                
+            } else {
+            
+                var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
+                gameScene.level = CCBReader.load(level.nextLevel) as! Level
         
-            var scene = CCScene()
-            scene.addChild(gameScene)
+                var scene = CCScene()
+                scene.addChild(gameScene)
         
-            CCDirector.sharedDirector().replaceScene(scene)
-            loadingNextLevel = true
+                CCDirector.sharedDirector().replaceScene(scene)
+                loadingNextLevel = true
+            }
         }
     }
     
@@ -512,9 +535,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         pauseMenu.removeFromParent()
         gameState = .Play
         
+        if gamePhysicsNode.paused == true {
+            gamePhysicsNode.paused = false
+        }
         
     }
-    
     
     
     func loadMainMenu(notification: NSNotification) {
@@ -644,12 +669,11 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             if gameState != .GameOver {
                 
-        
                 triggerGameOver()
                 
             }
             
-            return true
+            return false
         }
     }
     
@@ -668,7 +692,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 
             }
             
-            return true
+            return false
         }
     }
     

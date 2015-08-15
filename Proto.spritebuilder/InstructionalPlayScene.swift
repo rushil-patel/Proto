@@ -180,11 +180,11 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             if yaw > Float(0.01) {
                 
-                hero.physicsBody.velocity.x = 500 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = 475 * abs(CGFloat(yaw))
                 
             } else if yaw < Float(0.01) {
                 
-                hero.physicsBody.velocity.x = -500 * abs(CGFloat(yaw))
+                hero.physicsBody.velocity.x = -475 * abs(CGFloat(yaw))
                 
             } else {
                 
@@ -282,6 +282,10 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         gameState = .Pause
         hero.physicsBody.velocity = CGPointZero
         heroState = .Idle
+        colorToggle.visible = false
+        
+        gamePhysicsNode.paused = false
+
         
         pauseButton.visible = false
         pauseMenu = CCBReader.load("PauseScene") as! PauseScene
@@ -301,6 +305,13 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         heroState = .Idle
         hero.physicsBody.velocity = CGPointZero
         
+        gameTimerLabel.visible = false
+        colorToggle.visible = false
+
+        
+        gamePhysicsNode.paused = true
+
+
        
         //-----MIXPANEL------//
         let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
@@ -442,6 +453,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         gameState = .GameOver
         pauseButton.removeFromParent()
+
         
         
         
@@ -488,7 +500,8 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     func loadNextLevel(notification: NSNotificationCenter) {
         var scene = CCScene()
-
+        
+        
         if level.nextLevel == "Levels/Level1" {
             var gameScene = CCBReader.load("Gameplay") as! GamePlayScene
             gameScene.level = CCBReader.load(level.nextLevel) as! Level
@@ -518,6 +531,10 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func resumeLevel(notification: NSNotification) {
+        
+        if gamePhysicsNode.paused == true {
+            gamePhysicsNode.paused = false
+        }
         
         //animation has call back that will remove pauseMenu Node from gameScene
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
@@ -618,7 +635,8 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
                 
             }
             
-            return true
+            return false
+    
         }
     }
     
@@ -633,11 +651,12 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             if gameState != .GameOver {
                 
+                hero.physicsBody.collisionMask = []
                 triggerGameOver()
                 
             }
             
-            return true
+            return false
         }
     }
     

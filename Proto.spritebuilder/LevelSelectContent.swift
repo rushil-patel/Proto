@@ -73,10 +73,55 @@ class LevelSelectContent: CCNode {
             if index < 6 {
 
                 starsEarned = userActivityState.starsEarned["Levels/Tut\(levelSquares[index].name)"] as? Int
+                
+                //check if user has unlocked at least one star from previous level then unlock the current
+                
+                if levelSquares[index].name.toInt()! > 1 && levelSquares[index].name.toInt()! < 7{
+                    
+                    if let starsEarned = userActivityState.starsEarned["Levels/Tut\(levelSquares[index].name.toInt()! - 1)"] as? Int {
+                        
+                        levelSquares[index].levelButton.enabled = true
+                        
+                    } else {
+                        
+                        levelSquares[index].levelButton.enabled = false
+
+                    }
+                    
+                }
+                
             } else {
 
                 starsEarned = userActivityState.starsEarned["Levels/Level\(levelSquares[index].name.toInt()! - 6)"] as? Int
+                
+                if levelSquares[index].name.toInt()! == 7 {
+                    
+                    if let starsEarned = userActivityState.starsEarned["Levels/Tut6"] as? Int{
+                        
+                        levelSquares[index].levelButton.enabled = true
+                        
+                    } else {
+                        
+                        levelSquares[index].levelButton.enabled = false
+                    }
+                    
+                } else if levelSquares[index].name.toInt()! > 7 {
+                    
+                    if let starsEarned = userActivityState.starsEarned["Levels/Level\(levelSquares[index].name.toInt()! - 6)"] as? Int {
+                        
+                        levelSquares[index].levelButton.enabled = true
+                        
+                    } else {
+                        
+                        levelSquares[index].levelButton.enabled = false
+                        
+                    }
+                    
+                }
+                
             }
+            
+            
             if let starsEarned = starsEarned {
                 if starsEarned == 1 {
                     
@@ -104,7 +149,6 @@ class LevelSelectContent: CCNode {
             } else {
                 
                 //level not finished
-                
                 levelSquares[index].starOne.visible = false
                 levelSquares[index].starTwo.visible = false
                 levelSquares[index].starThree.visible = false

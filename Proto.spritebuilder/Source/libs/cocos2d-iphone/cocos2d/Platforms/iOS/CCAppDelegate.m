@@ -57,6 +57,8 @@ const CGSize FIXED_SIZE = {568, 384};
 @synthesize appDelegate = _appDelegate;
 @synthesize screenOrientation = _screenOrientation;
 
+
+
 // The available orientations should be defined in the Info.plist file.
 // And in iOS 6+ only, you can override it in the Root View controller in the "supportedInterfaceOrientations" method.
 // Only valid for iOS 6+. NOT VALID for iOS 4 / 5.
@@ -72,7 +74,9 @@ const CGSize FIXED_SIZE = {568, 384};
     }
     else
     {
-        return UIInterfaceOrientationMaskLandscape;
+        return UIInterfaceOrientationMaskLandscapeLeft;
+//        return UIInterfaceOrientationMaskLandscape;
+        
     }
 }
 
@@ -80,6 +84,7 @@ const CGSize FIXED_SIZE = {568, 384};
 // Only valid on iOS 4 / 5. NOT VALID for iOS 6.
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
+    
     if ([_screenOrientation isEqual:CCScreenOrientationAll])
     {
         return YES;
@@ -92,6 +97,7 @@ const CGSize FIXED_SIZE = {568, 384};
     {
         return UIInterfaceOrientationIsLandscape(interfaceOrientation);
     }
+     
 }
 
 // Projection delegate is only used if the fixed resolution mode is enabled
@@ -127,6 +133,7 @@ const CGSize FIXED_SIZE = {568, 384};
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
 	return UIInterfaceOrientationMaskAll;
+    //return UIInterfaceOrientationLandscapeLeft;
 }
 
 - (CCScene*) startScene
@@ -290,7 +297,8 @@ FindPOTScale(CGFloat size, CGFloat fixedSize)
     }
     else
     {
-        [[UIApplication sharedApplication] setStatusBarOrientation:UIDeviceOrientationLandscapeLeft | UIDeviceOrientationLandscapeRight];
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft];
+//        [[UIApplication sharedApplication] setStatusBarOrientation:UIDeviceOrientationLandscapeLeft | UIDeviceOrientationLandscapeRight/];
     }
 #endif
 }
