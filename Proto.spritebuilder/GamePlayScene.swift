@@ -9,7 +9,6 @@
 import Foundation
 import CoreMotion
 import AudioToolbox
-import Mixpanel
 
 enum GameState {
     case Play, Pause, GameOver, Starting, GameWon
@@ -32,11 +31,7 @@ struct Constants {
 }
 
 class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
-    
-    
-    //--------MIXPANEL-------//
-    let mixpanel: Mixpanel = Mixpanel.sharedInstance()
-    //-----------------------//
+
     
     //---User Activity State---//
     var userActivityState = UserState()
@@ -305,13 +300,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     func triggerLevelWon() {
-        
-        //-----MIXPANEL------//
-        let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
-        let mixpanelDate = "\(round((gameTimerLabel.string as NSString).floatValue))"
-        mixpanel.track("Level Complete", properties: ["Level Name" : levelName, "Level Completion Time": mixpanelDate])
-        //------------------//
-
         
         gamePhysicsNode.paused = true
         

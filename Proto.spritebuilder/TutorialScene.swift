@@ -8,8 +8,6 @@
 
 import Foundation
 import CoreMotion
-import Mixpanel
-
 
 class TutorialScene: CCScene, CCPhysicsCollisionDelegate {
     

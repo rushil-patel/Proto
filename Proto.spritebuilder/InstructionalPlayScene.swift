@@ -8,13 +8,9 @@
 
 import Foundation
 import CoreMotion
-import Mixpanel
 
 class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     
-    //--------MIXPANEL-------//
-    let mixpanel: Mixpanel = Mixpanel.sharedInstance()
-    //-----------------------//
     
     //---User Activity State---//
     var userActivityState = UserState()
@@ -313,10 +309,6 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
 
 
        
-        //-----MIXPANEL------//
-        let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
-        mixpanel.track("Level Complete", properties: ["Level Name" : levelName, "Level Completion Time" : gameTimerLabel.string])
-        //------------------//
         if let jumpScheduler = jumpScheduler {
             
             jumpScheduler.invalidate()
@@ -442,14 +434,6 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     
     
     func triggerGameOver() {
-        
-        //-----MIXPANEL------//
-        let levelName: String = (level.currentLevel as NSString).substringFromIndex(6)
-        mixpanel.track("User Death", properties: ["LevelName" as String : levelName])
-        
-        //------------------//
-        println(levelName)
-
         
         gameState = .GameOver
         pauseButton.removeFromParent()
