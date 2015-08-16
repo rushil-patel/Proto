@@ -27,8 +27,7 @@
 
 #import "AppDelegate.h"
 #import "CCBuilderReader.h"
-#import "Mixpanel.h"
-
+#import "Mixpanel/Mixpanel.h"
 
 @implementation AppController
 
