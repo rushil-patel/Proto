@@ -1,15 +1,15 @@
 # Uncomment this line to define a global platform for your project
 #platform :ios, '8.0'
 
-target 'Proto iOS' do
-    
-end
-
-target 'Proto Android' do
+target ‘Proto iOS' do
 
 end
 
-target 'Proto Mac' do
+target ‘Proto Android' do
+
+end
+
+target ‘Proto Mac' do
 
 end
 

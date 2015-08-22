@@ -5,6 +5,6 @@
       location = "group:SwitchRun.xcodeproj">
    </FileRef>
    <FileRef
-      location = "developer:Pods/Pods.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
