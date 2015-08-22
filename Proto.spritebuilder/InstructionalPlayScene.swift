@@ -200,6 +200,14 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
                 hero.physicsBody.velocity.x = 0
             }
             
+            let boundTop = level.position.y + level.boundingBox().height
+            let heroPosY = hero.position.y * Constants.screenHeight
+            if heroPosY + hero.boundingBox().height >= boundTop {
+                jumpScheduler!.invalidate()
+                jumpTime = 0
+                hero.physicsBody.velocity = CGPointMake(-20,-20)
+            }
+
             
             //check for gameOver
             //hero anchor point is at 0.5, 0
