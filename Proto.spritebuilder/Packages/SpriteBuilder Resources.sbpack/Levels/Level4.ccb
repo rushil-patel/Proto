@@ -426,12 +426,12 @@
 							<real>0.0</real>
 						</array>
 						<array>
-							<real>0.0</real>
-							<real>106.5</real>
+							<real>-1.1950516700744629</real>
+							<real>103.76318359375</real>
 						</array>
 						<array>
-							<real>887.14361572265625</real>
-							<real>107.20608520507812</real>
+							<real>889.6846923828125</real>
+							<real>105.56787109375</real>
 						</array>
 						<array>
 							<real>886.13580322265625</real>
@@ -446,12 +446,12 @@
 								<real>0.82026678323745728</real>
 							</array>
 							<array>
-								<real>887.14361572265625</real>
-								<real>107.20608520507812</real>
+								<real>889.6846923828125</real>
+								<real>105.56787109375</real>
 							</array>
 							<array>
-								<real>0.0</real>
-								<real>106.5</real>
+								<real>-1.1950516700744629</real>
+								<real>103.76318359375</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -1050,9 +1050,9 @@
 				<key>value</key>
 				<array>
 					<real>2050</real>
-					<real>320</real>
+					<real>1</real>
 					<integer>0</integer>
-					<integer>0</integer>
+					<integer>2</integer>
 				</array>
 			</dict>
 			<dict>

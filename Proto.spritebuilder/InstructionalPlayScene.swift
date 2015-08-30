@@ -25,6 +25,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
     weak var gamePhysicsNode: CCPhysicsNode!
     weak var cameraTargetNode: CCNode!
     
+    var actionFollow: CCActionFollow!
     
     var level: Level!
     var pauseMenu: PauseScene!
@@ -69,6 +70,8 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         
         gameState = .Play
         gamePhysicsNode.position = CGPointZero
+        
+        //gamePhysicsNode.debugDraw = true
         
         if motionManager.deviceMotionAvailable {
             motionManager.deviceMotionUpdateInterval = 1.0/60.0
@@ -120,7 +123,7 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             
             userInteractionEnabled = true
             gameTimerLabel.visible = true
-            colorToggle.scale = 0.01
+            colorToggle.scale = 0.001
             
             
         } else if level.currentLevel == "Levels/Tut5" {
@@ -129,7 +132,6 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             userInteractionEnabled = true
             gameTimerLabel.visible = true
             colorToggle.scale = 1.0
-            self.animationManager.runAnimationsForSequenceNamed("PulseColorToggleButton")
             
             
         } else if level.currentLevel == "Levels/Tut6" {
@@ -140,6 +142,12 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
 
             
         }
+        
+        cameraTargetNode.position.x =  Constants.screenWidth/2
+        cameraTargetNode.position.y = Constants.screenHeight/2
+        
+        actionFollow = CCActionFollow(target: cameraTargetNode , worldBoundary: level.boundingBox())
+        gamePhysicsNode.runAction(actionFollow)
     }
     
     override func onExit() {
@@ -148,6 +156,10 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
+    override func fixedUpdate(delta: CCTime) {
+//        cameraTargetNode.position.x = Constants.screenWidth/2 - CGFloat(level.startPosX) + hero.position.x
+//        cameraTargetNode.position.y = Constants.screenHeight/2 - CGFloat(level.startPosY) + hero.position.y
+    }
     
     
     override func  update(delta: CCTime) {
@@ -528,11 +540,12 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             gamePhysicsNode.paused = false
         }
         
-        //animation has call back that will remove pauseMenu Node from gameScene
+        colorToggle.visible = true
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
         pauseButton.visible = true
         pauseMenu.removeFromParent()
         gameState = .Play
+        
         
         
     }

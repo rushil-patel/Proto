@@ -449,8 +449,6 @@
 						<string>SwitchButton.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -522,8 +520,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>
-</string>
+							<string></string>
 							<false/>
 						</array>
 					</dict>
@@ -553,6 +550,19 @@
 						<string>Check</string>
 						<key>value</key>
 						<false/>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>color</string>
+						<key>type</key>
+						<string>Color3</string>
+						<key>value</key>
+						<array>
+							<real>1</real>
+							<real>0.22745098173618317</real>
+							<real>0.54117649793624878</real>
+							<real>1</real>
+						</array>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -659,6 +669,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

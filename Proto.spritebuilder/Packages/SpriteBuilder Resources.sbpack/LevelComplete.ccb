@@ -137,6 +137,8 @@
 						<real>0.64999997615814209</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -498,7 +500,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.27366629242897034</real>
+							<real>0.27883598208427429</real>
 							<real>0.4609375</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -913,7 +915,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.1337323784828186</real>
+							<real>0.26566743850708008</real>
 							<real>0.4166666567325592</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -927,7 +929,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>1</real>
 							<real>0.0</real>
 						</array>
 					</dict>
@@ -1121,7 +1123,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.62248837947845459</real>
+							<real>0.80028122663497925</real>
 							<real>0.4270833432674408</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -1135,7 +1137,7 @@
 						<string>Point</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
+							<real>1</real>
 							<real>0.0</real>
 						</array>
 					</dict>
@@ -1159,7 +1161,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string> best:
+							<string>best:
 </string>
 							<false/>
 						</array>

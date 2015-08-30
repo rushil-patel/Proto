@@ -266,9 +266,9 @@
 						<key>value</key>
 						<array>
 							<real>1</real>
-							<real>0.33281248807907104</real>
+							<real>106.5</real>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -351,10 +351,10 @@
 						<key>value</key>
 						<array>
 							<real>0.52288734912872314</real>
-							<real>0.16640624403953552</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -379,6 +379,8 @@
 						<string>BlackSingleSpike.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -413,10 +415,10 @@
 						<key>value</key>
 						<array>
 							<real>0.91100001335144043</real>
-							<real>0.16640624403953552</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -704,8 +706,6 @@
 						</array>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

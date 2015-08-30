@@ -102,7 +102,7 @@ class LevelSelectContent: CCNode {
                         
                     } else {
                         
-                        levelSquares[index].levelButton.enabled = false
+                        //levelSquares[index].levelButton.enabled = false
                     }
                     
                 } else if levelSquares[index].name.toInt()! > 7 {
@@ -113,7 +113,7 @@ class LevelSelectContent: CCNode {
                         
                     } else {
                         
-                        levelSquares[index].levelButton.enabled = false
+                        //levelSquares[index].levelButton.enabled = false
                         
                     }
                     

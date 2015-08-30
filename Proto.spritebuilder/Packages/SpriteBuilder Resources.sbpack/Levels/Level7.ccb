@@ -240,24 +240,24 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>8025.4462890625</real>
-							<real>106.5</real>
+							<real>7425.97705078125</real>
+							<real>108.82032775878906</real>
 						</array>
 						<array>
-							<real>8025.4462890625</real>
-							<real>2.1499333381652832</real>
+							<real>7404.66943359375</real>
+							<real>2.8984375</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>8025.4462890625</real>
-								<real>2.1499333381652832</real>
+								<real>7404.66943359375</real>
+								<real>2.8984375</real>
 							</array>
 							<array>
-								<real>8025.4462890625</real>
-								<real>106.5</real>
+								<real>7425.97705078125</real>
+								<real>108.82032775878906</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -302,9 +302,9 @@
 						<key>value</key>
 						<array>
 							<real>3.5211267471313477</real>
-							<real>0.33281248807907104</real>
+							<real>106.5</real>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -821,9 +821,9 @@
 						<key>value</key>
 						<array>
 							<real>3.5211267471313477</real>
-							<real>0.33281248807907104</real>
+							<real>106.5</real>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1162,9 +1162,9 @@
 				<key>value</key>
 				<array>
 					<real>2100</real>
-					<real>320</real>
+					<real>1</real>
 					<integer>0</integer>
-					<integer>0</integer>
+					<integer>2</integer>
 				</array>
 			</dict>
 			<dict>

@@ -266,9 +266,9 @@
 						<key>value</key>
 						<array>
 							<real>3.5211267471313477</real>
-							<real>0.33281248807907104</real>
+							<real>106.5</real>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -616,23 +616,23 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>4000</real>
+							<real>6023.53466796875</real>
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>4000</real>
-							<real>0.0</real>
+							<real>6041.03564453125</real>
+							<real>0.554718017578125</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>4000</real>
-								<real>0.0</real>
+								<real>6041.03564453125</real>
+								<real>0.554718017578125</real>
 							</array>
 							<array>
-								<real>4000</real>
+								<real>6023.53466796875</real>
 								<real>106.5</real>
 							</array>
 							<array>
@@ -678,9 +678,9 @@
 						<key>value</key>
 						<array>
 							<real>3.5211267471313477</real>
-							<real>0.33281248807907104</real>
+							<real>106.5</real>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -729,6 +729,8 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -886,9 +888,9 @@
 				<key>value</key>
 				<array>
 					<real>1704</real>
-					<real>320</real>
+					<real>1</real>
 					<integer>0</integer>
-					<integer>0</integer>
+					<integer>2</integer>
 				</array>
 			</dict>
 			<dict>
@@ -916,8 +918,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

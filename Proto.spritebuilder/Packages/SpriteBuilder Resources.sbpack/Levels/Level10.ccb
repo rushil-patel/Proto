@@ -186,11 +186,11 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.5134320855140686</real>
+							<real>0.22019150853157043</real>
+							<real>190.79826354980469</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -200,11 +200,19 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.15999999642372131</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
 						</array>
+					</dict>
+					<dict>
+						<key>name</key>
+						<string>rotation</string>
+						<key>type</key>
+						<string>Degrees</string>
+						<key>value</key>
+						<real>180</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -249,10 +257,10 @@
 						<key>value</key>
 						<array>
 							<real>0.22019150853157043</real>
-							<real>0.53503209352493286</real>
+							<real>164.29826354980469</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -262,7 +270,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.14838714897632599</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
@@ -347,8 +355,6 @@
 						<string>WhitePlatform.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -383,10 +389,10 @@
 						<key>value</key>
 						<array>
 							<real>0.40712958574295044</real>
-							<real>0.20925703644752502</real>
+							<real>66.962249755859375</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -396,7 +402,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.25676116347312927</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
@@ -453,10 +459,10 @@
 						<key>value</key>
 						<array>
 							<real>0.63537436723709106</real>
-							<real>0.12644453346729279</real>
+							<real>40.462249755859375</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -466,7 +472,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.27775946259498596</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
@@ -522,7 +528,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.63537436723709106</real>
+							<real>0.59912258386611938</real>
 							<real>0.12644453346729279</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -536,7 +542,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.26479899883270264</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
@@ -598,7 +604,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.15111008286476135</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
@@ -668,7 +674,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.11277618259191513</real>
+							<real>0.5</real>
 							<real>0.25</real>
 							<false/>
 							<integer>0</integer>
@@ -840,9 +846,9 @@
 				<key>value</key>
 				<array>
 					<real>731</real>
-					<real>320</real>
+					<real>1</real>
 					<integer>0</integer>
-					<integer>0</integer>
+					<integer>2</integer>
 				</array>
 			</dict>
 			<dict>
@@ -870,6 +876,8 @@
 				</array>
 			</dict>
 		</array>
+		<key>selected</key>
+		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>

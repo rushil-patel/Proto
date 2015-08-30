@@ -498,6 +498,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 
                 let epilogue = CCBReader.load("Epilogue")
                 self.addChild(epilogue)
+                userInteractionEnabled = false
                 
                 
             } else {
@@ -517,7 +518,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
 
     func resumeLevel(notification: NSNotification) {
         
-        //animation has call back that will remove pauseMenu Node from gameScene
+        colorToggle.visible = true
         pauseMenu.runAction(CCActionFadeOut(duration: 0.5))
         pauseButton.visible = true
         pauseMenu.removeFromParent()

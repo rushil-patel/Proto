@@ -319,9 +319,9 @@
 						<key>value</key>
 						<array>
 							<real>3.5211267471313477</real>
-							<real>0.33281248807907104</real>
+							<real>106.5</real>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -668,10 +668,10 @@
 						<key>value</key>
 						<array>
 							<real>0.27359157800674438</real>
-							<real>0.16640624403953552</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -701,6 +701,8 @@
 						<string>WhiteSingleSpike.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -1001,10 +1003,10 @@
 						<key>value</key>
 						<array>
 							<real>0.42722541093826294</real>
-							<real>0.16640624403953552</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1334,10 +1336,10 @@
 						<key>value</key>
 						<array>
 							<real>670.22406005859375</real>
-							<real>0.16640624403953552</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1667,10 +1669,10 @@
 						<key>value</key>
 						<array>
 							<real>0.75730991363525391</real>
-							<real>0.16640624403953552</real>
+							<real>53.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
-							<integer>2</integer>
+							<integer>0</integer>
 						</array>
 					</dict>
 					<dict>
@@ -1686,7 +1688,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>1.3296288251876831</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -3024,7 +3026,7 @@
 						<key>value</key>
 						<array>
 							<real>0.5</real>
-							<real>1.0656558275222778</real>
+							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
 						</array>
@@ -3453,9 +3455,9 @@
 				<key>value</key>
 				<array>
 					<real>1136</real>
-					<real>320</real>
+					<real>1</real>
 					<integer>0</integer>
-					<integer>0</integer>
+					<integer>2</integer>
 				</array>
 			</dict>
 			<dict>
@@ -3538,7 +3540,7 @@
 			<key>offset</key>
 			<real>0.0</real>
 			<key>position</key>
-			<real>5.0333333015441895</real>
+			<real>6.3333334922790527</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>
