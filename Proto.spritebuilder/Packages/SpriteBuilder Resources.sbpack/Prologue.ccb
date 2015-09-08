@@ -1125,7 +1125,7 @@
 						<string>Text</string>
 						<key>value</key>
 						<array>
-							<string>Yay! lets go we have to hurry</string>
+							<string>Alright! lets go we have to hurry</string>
 							<false/>
 						</array>
 					</dict>
@@ -1164,20 +1164,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>0.0</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1284,6 +1271,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>
@@ -2221,7 +2210,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>1.0700000524520874</real>
+							<real>0.38392907381057739</real>
 							<real>0.16640624403953552</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -2340,8 +2329,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -2414,7 +2401,7 @@
 			<key>offset</key>
 			<real>5.4313931465148926</real>
 			<key>position</key>
-			<real>13</real>
+			<real>10.666666984558105</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

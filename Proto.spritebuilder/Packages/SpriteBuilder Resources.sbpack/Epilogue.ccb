@@ -227,71 +227,6 @@
 				<string></string>
 				<key>memberVarAssignmentType</key>
 				<integer>1</integer>
-				<key>physicsBody</key>
-				<dict>
-					<key>affectedByGravity</key>
-					<true/>
-					<key>allowsRotation</key>
-					<true/>
-					<key>bodyShape</key>
-					<integer>0</integer>
-					<key>collisionCategories</key>
-					<array/>
-					<key>collisionMask</key>
-					<array/>
-					<key>collisionType</key>
-					<string>normalPlatform</string>
-					<key>cornerRadius</key>
-					<real>0.0</real>
-					<key>density</key>
-					<real>1</real>
-					<key>dynamic</key>
-					<false/>
-					<key>elasticity</key>
-					<real>0.30000001192092896</real>
-					<key>friction</key>
-					<real>0.0</real>
-					<key>points</key>
-					<array>
-						<array>
-							<real>0.0</real>
-							<real>0.0</real>
-						</array>
-						<array>
-							<real>0.0</real>
-							<real>106.5</real>
-						</array>
-						<array>
-							<real>4005.741943359375</real>
-							<real>106.5</real>
-						</array>
-						<array>
-							<real>4005.741943359375</real>
-							<real>0.0</real>
-						</array>
-					</array>
-					<key>polygons</key>
-					<array>
-						<array>
-							<array>
-								<real>4005.741943359375</real>
-								<real>0.0</real>
-							</array>
-							<array>
-								<real>4005.741943359375</real>
-								<real>106.5</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>106.5</real>
-							</array>
-							<array>
-								<real>0.0</real>
-								<real>0.0</real>
-							</array>
-						</array>
-					</array>
-				</dict>
 				<key>properties</key>
 				<array>
 					<dict>
@@ -1487,7 +1422,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>1</real>
+						<real>0.0</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -1499,7 +1434,7 @@
 							<real>1</real>
 							<real>0.67058825492858887</real>
 							<real>0.11372549086809158</real>
-							<real>1</real>
+							<real>0.0</real>
 						</array>
 					</dict>
 					<dict>
@@ -1780,20 +1715,7 @@
 						<key>type</key>
 						<string>Float</string>
 						<key>value</key>
-						<real>0.0</real>
-					</dict>
-					<dict>
-						<key>name</key>
-						<string>color</string>
-						<key>type</key>
-						<string>Color3</string>
-						<key>value</key>
-						<array>
-							<real>1</real>
-							<real>1</real>
-							<real>1</real>
-							<real>0.0</real>
-						</array>
+						<real>1</real>
 					</dict>
 					<dict>
 						<key>name</key>
@@ -2217,6 +2139,384 @@
 													<string>spriteFrame</string>
 													<key>time</key>
 													<real>1.5</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>16.533332824707031</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>16.666666030883789</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite2.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>17</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>17.133333206176758</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite3.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>17.433332443237305</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>17.533332824707031</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite2.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>17.866666793823242</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>18.066667556762695</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>18.200000762939453</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite2.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>18.533332824707031</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>18.666666030883789</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite3.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>18.966667175292969</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>19.066667556762695</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite2.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>19.399999618530273</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>19.633333206176758</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>19.766666412353516</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite2.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>20.100000381469727</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>20.233333587646484</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite3.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>20.533332824707031</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite1.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>20.633333206176758</real>
+													<key>type</key>
+													<integer>7</integer>
+													<key>value</key>
+													<array>
+														<string>Assets/player/HeroWhite2.png</string>
+														<string>Use regular file</string>
+													</array>
+												</dict>
+												<dict>
+													<key>easing</key>
+													<dict>
+														<key>type</key>
+														<integer>0</integer>
+													</dict>
+													<key>name</key>
+													<string>spriteFrame</string>
+													<key>time</key>
+													<real>20.966667175292969</real>
 													<key>type</key>
 													<integer>7</integer>
 													<key>value</key>
@@ -2911,7 +3211,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.23591549694538116</real>
+							<real>1.0800000429153442</real>
 							<real>0.1510000079870224</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -3150,7 +3450,144 @@
 						<key>animatedProperties</key>
 						<dict>
 							<key>0</key>
-							<dict/>
+							<dict>
+								<key>spriteFrame</key>
+								<dict>
+									<key>keyframes</key>
+									<array>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>19.066667556762695</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite1.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>19.200000762939453</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite2.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>19.533332824707031</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite1.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>19.666666030883789</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite3.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>19.966667175292969</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite1.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>20.066667556762695</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite2.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+										<dict>
+											<key>easing</key>
+											<dict>
+												<key>type</key>
+												<integer>0</integer>
+											</dict>
+											<key>name</key>
+											<string>spriteFrame</string>
+											<key>time</key>
+											<real>20.399999618530273</real>
+											<key>type</key>
+											<integer>7</integer>
+											<key>value</key>
+											<array>
+												<string>Assets/player/HeroWhite1.png</string>
+												<string>Use regular file</string>
+											</array>
+										</dict>
+									</array>
+									<key>name</key>
+									<string>spriteFrame</string>
+									<key>type</key>
+									<integer>7</integer>
+								</dict>
+							</dict>
 							<key>1</key>
 							<dict>
 								<key>spriteFrame</key>
@@ -3729,7 +4166,7 @@
 				<key>customClass</key>
 				<string></string>
 				<key>displayName</key>
-				<string>pinkHeroContainer</string>
+				<string>OrangeHeroContainer</string>
 				<key>memberVarAssignmentName</key>
 				<string></string>
 				<key>memberVarAssignmentType</key>
@@ -3756,8 +4193,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.78345072269439697</real>
-							<real>0.21871429681777954</real>
+							<real>1.0598591566085815</real>
+							<real>0.1510000079870224</real>
 							<integer>0</integer>
 							<integer>2</integer>
 							<integer>2</integer>
@@ -3875,8 +4312,6 @@
 				</array>
 			</dict>
 		</array>
-		<key>selected</key>
-		<true/>
 	</dict>
 	<key>notes</key>
 	<array/>
@@ -3947,9 +4382,9 @@
 			<key>name</key>
 			<string>Default Timeline</string>
 			<key>offset</key>
-			<real>0.0</real>
+			<real>6.1979160308837891</real>
 			<key>position</key>
-			<real>15.066666603088379</real>
+			<real>24.666666030883789</real>
 			<key>resolution</key>
 			<real>30</real>
 			<key>scale</key>

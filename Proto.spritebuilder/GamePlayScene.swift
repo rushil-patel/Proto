@@ -499,6 +499,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
                 let epilogue = CCBReader.load("Epilogue")
                 self.addChild(epilogue)
                 userInteractionEnabled = false
+                NSNotificationCenter.defaultCenter().removeObserver(self)
                 
                 
             } else {
