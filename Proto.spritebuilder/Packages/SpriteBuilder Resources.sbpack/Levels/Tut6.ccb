@@ -317,8 +317,6 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -724,7 +722,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.91100001335144043</real>
+							<real>0.89999997615814209</real>
 							<real>53.25</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -753,6 +751,8 @@
 						<string>EndPortal.ccb</string>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

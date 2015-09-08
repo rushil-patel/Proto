@@ -473,7 +473,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
             CCDirector.sharedDirector().replaceScene(scene)
         }
         
-        self.runAction(CCActionSequence(array: [CCActionDelay(duration: 0.5), restartLevel]))
+        self.runAction(CCActionSequence(array: [CCActionDelay(duration: 1.5), restartLevel]))
     }
     
     func retryLevel(notification: NSNotification) {

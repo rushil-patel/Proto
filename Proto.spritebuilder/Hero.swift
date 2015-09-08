@@ -70,11 +70,26 @@ class Hero: CCSprite {
         
         if self.colorMode == "black" {
            
-            self.animationManager.runAnimationsForSequenceNamed("DeadBlack")
+            self.visible = false
+            
+            var popParticle = CCBReader.load("DeathPop") as! CCParticleSystem
+            popParticle.startColor = CCColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+            popParticle.startColorVar = CCColor(red: 0, green: 0, blue: 0, alpha: 0)
+            popParticle.endColor = CCColor(red: 0, green: 0, blue: 0, alpha: 1.0)
+            popParticle.endColorVar = CCColor(red: 0, green: 0, blue: 0, alpha: 0.0)
+            popParticle.blendAdditive = false
+            popParticle.position = CGPointMake(self.positionInPoints.x, self.positionInPoints.y + self.boundingBox().height/2)
+            
+            self.parent.addChild(popParticle)
             
         } else if self.colorMode == "white" {
             
-            self.animationManager.runAnimationsForSequenceNamed("DeadWhite")
+            self.visible = false
+            
+            var popParticle = CCBReader.load("DeathPop") as! CCParticleSystem
+            popParticle.position = CGPointMake(self.positionInPoints.x, self.positionInPoints.y + self.boundingBox().height/2)
+            
+            self.parent.addChild(popParticle)
             
         }
     }
