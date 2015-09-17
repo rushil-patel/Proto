@@ -1161,7 +1161,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SwitchRun;
-				PROVISIONING_PROFILE = "199cbc05-b950-4eac-a7ca-afc09867faa6";
+				PROVISIONING_PROFILE = "8cbc3a60-1646-4668-ac47-a74988ff4efe";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1198,7 +1198,7 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = SwitchRun;
-				PROVISIONING_PROFILE = "199cbc05-b950-4eac-a7ca-afc09867faa6";
+				PROVISIONING_PROFILE = "8cbc3a60-1646-4668-ac47-a74988ff4efe";
 				SWIFT_OBJC_BRIDGING_HEADER = "Source/Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

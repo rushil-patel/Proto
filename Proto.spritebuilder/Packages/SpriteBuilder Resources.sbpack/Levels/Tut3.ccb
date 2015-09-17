@@ -204,24 +204,24 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>587.33331298828125</real>
-							<real>103.43751525878906</real>
+							<real>190.46090698242188</real>
+							<real>106.5</real>
 						</array>
 						<array>
-							<real>588.3773193359375</real>
-							<real>-0.3125</real>
+							<real>190.46090698242188</real>
+							<real>0.0</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>588.3773193359375</real>
-								<real>-0.3125</real>
+								<real>190.46090698242188</real>
+								<real>0.0</real>
 							</array>
 							<array>
-								<real>587.33331298828125</real>
-								<real>103.43751525878906</real>
+								<real>190.46090698242188</real>
+								<real>106.5</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -265,7 +265,7 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>1</real>
+							<real>0.33300000429153442</real>
 							<real>106.5</real>
 							<integer>2</integer>
 							<integer>0</integer>
@@ -289,7 +289,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.33300000429153442</real>
+							<real>1</real>
 							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
@@ -368,24 +368,24 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>565.87982177734375</real>
-							<real>105.97765350341797</real>
+							<real>189.11607360839844</real>
+							<real>106.5</real>
 						</array>
 						<array>
-							<real>565.211181640625</real>
-							<real>-0.38225263357162476</real>
+							<real>189.11607360839844</real>
+							<real>0.57717615365982056</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>565.211181640625</real>
-								<real>-0.38225263357162476</real>
+								<real>189.11607360839844</real>
+								<real>0.57717615365982056</real>
 							</array>
 							<array>
-								<real>565.87982177734375</real>
-								<real>105.97765350341797</real>
+								<real>189.11607360839844</real>
+								<real>106.5</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -415,7 +415,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.33300000429153442</real>
+							<real>0.33223941922187805</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -429,9 +429,9 @@
 						<string>Size</string>
 						<key>value</key>
 						<array>
-							<real>568</real>
+							<real>0.33300000429153442</real>
 							<real>106.5</real>
-							<integer>0</integer>
+							<integer>2</integer>
 							<integer>0</integer>
 						</array>
 					</dict>
@@ -453,7 +453,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.33300000429153442</real>
+							<real>1</real>
 							<real>1.5430730581283569</real>
 							<false/>
 							<integer>0</integer>
@@ -532,24 +532,24 @@
 							<real>106.5</real>
 						</array>
 						<array>
-							<real>887.14361572265625</real>
-							<real>107.20608520507812</real>
+							<real>195.55575561523438</real>
+							<real>106.5</real>
 						</array>
 						<array>
-							<real>886.13580322265625</real>
-							<real>0.82026678323745728</real>
+							<real>195.55575561523438</real>
+							<real>0.0</real>
 						</array>
 					</array>
 					<key>polygons</key>
 					<array>
 						<array>
 							<array>
-								<real>886.13580322265625</real>
-								<real>0.82026678323745728</real>
+								<real>195.55575561523438</real>
+								<real>0.0</real>
 							</array>
 							<array>
-								<real>887.14361572265625</real>
-								<real>107.20608520507812</real>
+								<real>195.55575561523438</real>
+								<real>106.5</real>
 							</array>
 							<array>
 								<real>0.0</real>
@@ -579,7 +579,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.66600000858306885</real>
+							<real>0.66523939371109009</real>
 							<real>0.0</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -617,7 +617,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.33889055252075195</real>
+							<real>1</real>
 							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
@@ -645,6 +645,8 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -707,8 +709,6 @@
 						<string>EndPortal.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

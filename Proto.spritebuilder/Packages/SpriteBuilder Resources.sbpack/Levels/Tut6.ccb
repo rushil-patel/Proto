@@ -71,8 +71,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.0</real>
-							<real>0.0</real>
+							<real>3.3590087890625</real>
+							<real>13.888888359069824</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -153,6 +153,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -350,7 +352,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>262.3590087890625</real>
+							<real>227.3590087890625</real>
 							<real>53.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -412,7 +414,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>322.3590087890625</real>
+							<real>287.3590087890625</real>
 							<real>53.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -474,7 +476,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>382.3590087890625</real>
+							<real>347.3590087890625</real>
 							<real>53.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -536,8 +538,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>353.35897827148438</real>
-							<real>113.25</real>
+							<real>318.3590087890625</real>
+							<real>112.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -598,8 +600,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>293.3590087890625</real>
-							<real>113.25</real>
+							<real>258.3590087890625</real>
+							<real>112.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -660,8 +662,8 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>324.3590087890625</real>
-							<real>173.25</real>
+							<real>289.048828125</real>
+							<real>172.25</real>
 							<integer>0</integer>
 							<integer>0</integer>
 							<integer>0</integer>
@@ -751,8 +753,6 @@
 						<string>EndPortal.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

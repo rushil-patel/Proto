@@ -101,7 +101,7 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
         //enable user inteaction
         userInteractionEnabled = true
         
-       // gamePhysicsNode.debugDraw = true
+       //gamePhysicsNode.debugDraw = true
         
         //set physics collision delegate to self
         gamePhysicsNode.collisionDelegate = self
@@ -163,7 +163,6 @@ class GamePlayScene: CCNode, CCPhysicsCollisionDelegate {
     }
     
     override func fixedUpdate(delta: CCTime) {
-        
         cameraTargetNode.position.x = Constants.screenWidth/2 - CGFloat(level.startPosX) + hero.position.x
         cameraTargetNode.position.y = Constants.screenHeight/2 - CGFloat(level.startPosY) + hero.position.y
         

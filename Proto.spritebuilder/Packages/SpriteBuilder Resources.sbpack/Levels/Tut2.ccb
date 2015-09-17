@@ -289,7 +289,7 @@
 						<string>ScaleLock</string>
 						<key>value</key>
 						<array>
-							<real>0.44685676693916321</real>
+							<real>0.40000000596046448</real>
 							<real>0.5</real>
 							<false/>
 							<integer>0</integer>
@@ -317,6 +317,8 @@
 						<real>0.80000001192092896</real>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -543,8 +545,6 @@
 						<string>EndPortal.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>

@@ -519,8 +519,6 @@
 						<string>EndPortal.ccb</string>
 					</dict>
 				</array>
-				<key>selected</key>
-				<true/>
 			</dict>
 			<dict>
 				<key>UUID</key>
@@ -600,7 +598,7 @@
 						<string>Position</string>
 						<key>value</key>
 						<array>
-							<real>0.17077465355396271</real>
+							<real>0.1654929518699646</real>
 							<real>0.8125</real>
 							<integer>0</integer>
 							<integer>2</integer>
@@ -784,6 +782,8 @@
 						</array>
 					</dict>
 				</array>
+				<key>selected</key>
+				<true/>
 				<key>seqExpanded</key>
 				<true/>
 			</dict>

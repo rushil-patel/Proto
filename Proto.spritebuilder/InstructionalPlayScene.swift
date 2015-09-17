@@ -674,7 +674,10 @@ class InstructionalPlayScene: CCNode, CCPhysicsCollisionDelegate {
             let triggerWin = CCActionCallFunc(target: self, selector: Selector("triggerLevelWon"))
             pauseButton.visible = false
 
-            let moveToPlatform = CCActionMoveTo(duration: 1.0, position: CGPointMake(level.endPortal.position.x, level.endPortal.position.y + level.endPortal.boundingBox().height))
+            let moveToPlatform = CCActionMoveTo(duration: 1.0, position: CGPointMake(level.endPortal.position.x ,
+                level.endPortal.position.y/Constants.screenHeight + level.endPortal.boundingBox().height/Constants.screenHeight))
+            
+            println("\(level.endPortal.position.x) | \(level.endPortal.position.y/Constants.screenHeight + level.endPortal.boundingBox().height/Constants.screenHeight)")
             
             hero.runAction(CCActionSequence(array: [moveToPlatform, triggerWin]))
         }
